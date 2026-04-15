@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ours ♡</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Caveat:wght@400;500;600&display=swap');
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -327,6 +327,269 @@
         }
 
         .toast.show { transform: translateX(-50%) translateY(0); }
+
+        /* ===================== NOTES / STICKERS ===================== */
+
+        .notes-section {
+            display: none;
+            min-height: 500px;
+            position: relative;
+        }
+
+        .notes-section.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .notes-board {
+            position: relative;
+            min-height: 500px;
+            width: 100%;
+            background: rgba(255,255,255,0.3);
+            border-radius: 24px;
+            border: 2px dashed rgba(100, 116, 139, 0.2);
+            margin-top: 20px;
+            overflow: hidden;
+        }
+
+        .notes-board-hint {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #cbd5e1;
+            pointer-events: none;
+            font-size: 0.9em;
+        }
+
+        .notes-board-hint .emoji {
+            font-size: 2.5em;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .add-note-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 auto;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #475569, #1e293b);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(71, 85, 105, 0.3);
+        }
+
+        .add-note-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(71, 85, 105, 0.4);
+        }
+
+        .add-note-btn:active { transform: scale(0.97); }
+
+        .add-note-btn .plus {
+            font-size: 1.4em;
+            font-weight: 300;
+            line-height: 1;
+        }
+
+        /* Sticker */
+        .sticker {
+            position: absolute;
+            width: 180px;
+            min-height: 160px;
+            border-radius: 4px 4px 4px 4px;
+            padding: 30px 16px 16px;
+            cursor: grab;
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sticker:hover {
+            z-index: 20;
+            box-shadow: 6px 8px 25px rgba(0,0,0,0.15) !important;
+        }
+
+        .sticker.is-dragging {
+            cursor: grabbing;
+            z-index: 100;
+            transform: rotate(2deg) scale(1.05) !important;
+            box-shadow: 10px 15px 35px rgba(0,0,0,0.2) !important;
+        }
+
+        .sticker-delete {
+            position: absolute;
+            top: 8px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.1em;
+            cursor: pointer;
+            color: rgba(0,0,0,0.25);
+            transition: color 0.2s ease;
+            line-height: 1;
+            padding: 2px;
+        }
+
+        .sticker-delete:hover { color: rgba(200, 0, 0, 0.6); }
+
+        .sticker-author {
+            position: absolute;
+            top: 10px;
+            left: 14px;
+            font-size: 0.65em;
+            font-family: 'Caveat', cursive;
+            color: rgba(0,0,0,0.3);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .sticker textarea {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-family: 'Caveat', cursive;
+            font-size: 1.2em;
+            color: rgba(0,0,0,0.7);
+            resize: none;
+            width: 100%;
+            min-height: 100px;
+            line-height: 1.5;
+            cursor: text;
+        }
+
+        .sticker textarea::placeholder {
+            color: rgba(0,0,0,0.25);
+        }
+
+        .sticker-date {
+            font-family: 'Caveat', cursive;
+            font-size: 0.7em;
+            color: rgba(0,0,0,0.25);
+            text-align: right;
+            margin-top: 8px;
+        }
+
+        /* Note modal */
+        .note-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(4px);
+            z-index: 500;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .note-modal-overlay.show {
+            display: flex;
+            animation: fadeIn 0.2s ease;
+        }
+
+        .note-modal {
+            background: white;
+            border-radius: 24px;
+            padding: 30px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .note-modal h3 {
+            font-size: 1.1em;
+            color: #334155;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .note-modal textarea {
+            width: 100%;
+            height: 150px;
+            border: 2px solid rgba(100, 116, 139, 0.15);
+            border-radius: 16px;
+            padding: 16px;
+            font-family: 'Caveat', cursive;
+            font-size: 1.3em;
+            color: #334155;
+            resize: none;
+            outline: none;
+            transition: border-color 0.3s ease;
+            line-height: 1.5;
+        }
+
+        .note-modal textarea:focus {
+            border-color: #64748b;
+            box-shadow: 0 0 0 4px rgba(100, 116, 139, 0.1);
+        }
+
+        .note-modal textarea::placeholder {
+            color: #cbd5e1;
+        }
+
+        .note-color-picker {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 16px 0;
+        }
+
+        .color-dot {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .color-dot:hover { transform: scale(1.15); }
+        .color-dot.selected { border-color: #475569; transform: scale(1.15); }
+
+        .note-modal-btns {
+            display: flex;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .note-modal-btns button {
+            flex: 1;
+            padding: 12px;
+            border-radius: 14px;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cancel {
+            background: rgba(100, 116, 139, 0.1);
+            color: #64748b;
+        }
+
+        .btn-cancel:hover { background: rgba(100, 116, 139, 0.2); }
+
+        .btn-post {
+            background: linear-gradient(135deg, #475569, #1e293b);
+            color: white;
+        }
+
+        .btn-post:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(71, 85, 105, 0.3);
+        }
     </style>
 </head>
 <body>
@@ -347,12 +610,25 @@
 
     <div class="toast" id="toast"></div>
 
+    <!-- Note Modal -->
+    <div class="note-modal-overlay" id="noteModalOverlay">
+        <div class="note-modal">
+            <h3>✍️ leave a note</h3>
+            <textarea id="noteTextarea" placeholder="write something sweet..."></textarea>
+            <div class="note-color-picker" id="colorPicker"></div>
+            <div class="note-modal-btns">
+                <button class="btn-cancel" onclick="closeNoteModal()">cancel</button>
+                <button class="btn-post" onclick="postNote()">post it ♡</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
     <script>
-        // ===================== FIREBASE CONFIG =====================
+        // ===================== FIREBASE =====================
         const firebaseConfig = {
             apiKey: "AIzaSyCDAmRuuUKsJMjaYyvDBsmETeo4cr11vW8",
             authDomain: "ours-752bf.firebaseapp.com",
@@ -360,15 +636,14 @@
             projectId: "ours-752bf",
             storageBucket: "ours-752bf.firebasestorage.app",
             messagingSenderId: "480212666124",
-            appId: "1:480212666124:web:2147a3cc901ff2f1be2b29",
-            measurementId: "G-NB92NDV32Q"
+            appId: "1:480212666124:web:2147a3cc901ff2f1be2b29"
         };
 
         firebase.initializeApp(firebaseConfig);
         const db = firebase.database();
         const dataRef = db.ref('tracker-data');
+        const notesRef = db.ref('sticker-notes');
 
-        // Connection status
         firebase.database().ref('.info/connected').on('value', (snap) => {
             const status = document.getElementById('syncStatus');
             if (snap.val() === true) {
@@ -377,46 +652,6 @@
                 status.innerHTML = '<span class="dot offline"></span> offline';
             }
         });
-
-        // ===================== SOUND EFFECTS =====================
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
-        function playSound(type) {
-            if (audioCtx.state === 'suspended') audioCtx.resume();
-            const oscillator = audioCtx.createOscillator();
-            const gainNode = audioCtx.createGain();
-            oscillator.connect(gainNode);
-            gainNode.connect(audioCtx.destination);
-            const now = audioCtx.currentTime;
-
-            if (type === 'add') {
-                oscillator.type = 'sine';
-                oscillator.frequency.setValueAtTime(520, now);
-                oscillator.frequency.exponentialRampToValueAtTime(750, now + 0.1);
-                gainNode.gain.setValueAtTime(0.1, now);
-                gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
-                oscillator.start(now); oscillator.stop(now + 0.15);
-            } else if (type === 'check') {
-                oscillator.type = 'triangle';
-                oscillator.frequency.setValueAtTime(300, now);
-                gainNode.gain.setValueAtTime(0.1, now);
-                gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
-                oscillator.start(now); oscillator.stop(now + 0.15);
-            } else if (type === 'delete') {
-                oscillator.type = 'sine';
-                oscillator.frequency.setValueAtTime(150, now);
-                oscillator.frequency.exponentialRampToValueAtTime(50, now + 0.1);
-                gainNode.gain.setValueAtTime(0.1, now);
-                gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
-                oscillator.start(now); oscillator.stop(now + 0.15);
-            } else if (type === 'switch') {
-                oscillator.type = 'square';
-                oscillator.frequency.setValueAtTime(200, now);
-                gainNode.gain.setValueAtTime(0.03, now);
-                gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
-                oscillator.start(now); oscillator.stop(now + 0.06);
-            }
-        }
 
         // ===================== CATEGORIES =====================
         const categories = [
@@ -427,8 +662,38 @@
             { id: 'books',   name: 'books',        emoji: '📚', placeholder: 'title or author...',           emptyEmoji: '📖',  emptyText: 'empty shelf... lets fix that' },
             { id: 'recipes', name: 'recipes',      emoji: '🍳', placeholder: 'dish name or link...',         emptyEmoji: '👨‍🍳', emptyText: 'no recipes yet... im hungry tho' },
             { id: 'dreams',  name: 'dreams',       emoji: '🌙', placeholder: 'the crazier the better...',    emptyEmoji: '💫',  emptyText: 'dream big baby... add something' },
+            { id: 'games',   name: 'games',        emoji: '🎮', placeholder: 'game name or idea...',         emptyEmoji: '🕹️',  emptyText: 'no games yet... what should we play?' },
             { id: 'random',  name: 'random',       emoji: '🎲', placeholder: 'anything else...',             emptyEmoji: '🤷',  emptyText: 'this is for the stuff that doesnt fit anywhere' }
         ];
+
+        // ===================== NOTE COLORS =====================
+        const noteColors = [
+            { bg: '#fef9c3', shadow: 'rgba(234,179,8,0.25)' },
+            { bg: '#fce7f3', shadow: 'rgba(236,72,153,0.2)' },
+            { bg: '#dbeafe', shadow: 'rgba(59,130,246,0.2)' },
+            { bg: '#dcfce7', shadow: 'rgba(34,197,94,0.2)' },
+            { bg: '#ede9fe', shadow: 'rgba(139,92,246,0.2)' },
+            { bg: '#ffedd5', shadow: 'rgba(249,115,22,0.2)' },
+        ];
+
+        let selectedColor = 0;
+
+        // Build color picker
+        function buildColorPicker() {
+            const picker = document.getElementById('colorPicker');
+            noteColors.forEach((c, i) => {
+                const dot = document.createElement('div');
+                dot.className = 'color-dot' + (i === 0 ? ' selected' : '');
+                dot.style.background = c.bg;
+                dot.style.boxShadow = `0 3px 10px ${c.shadow}`;
+                dot.onclick = () => {
+                    document.querySelectorAll('.color-dot').forEach(d => d.classList.remove('selected'));
+                    dot.classList.add('selected');
+                    selectedColor = i;
+                };
+                picker.appendChild(dot);
+            });
+        }
 
         // ===================== LOCAL CACHE =====================
         let localData = {};
@@ -447,7 +712,6 @@
         }
 
         // ===================== FIREBASE SYNC =====================
-        // Listen for ALL changes in real-time
         dataRef.on('value', (snapshot) => {
             localData = snapshot.val() || {};
             renderAll();
@@ -462,25 +726,30 @@
         function buildTabs() {
             const tabsEl = document.getElementById('tabs');
 
+            // Regular categories
             categories.forEach((cat, i) => {
                 const btn = document.createElement('button');
                 btn.className = 'tab' + (i === 0 ? ' active' : '');
                 btn.dataset.cat = cat.id;
-
                 const items = localData[cat.id] || [];
                 btn.innerHTML = `${cat.emoji} ${cat.name}${items.length > 0 ? `<span class="counter">${items.length}</span>` : ''}`;
-
-                btn.addEventListener('click', () => {
-                    playSound('switch');
-                    switchTab(cat.id);
-                });
+                btn.addEventListener('click', () => switchTab(cat.id));
                 tabsEl.appendChild(btn);
             });
+
+            // Notes tab
+            const notesBtn = document.createElement('button');
+            notesBtn.className = 'tab';
+            notesBtn.dataset.cat = 'notes';
+            notesBtn.innerHTML = '🗒️ notes';
+            notesBtn.addEventListener('click', () => switchTab('notes'));
+            tabsEl.appendChild(notesBtn);
         }
 
         function buildSections() {
             const sectionsEl = document.getElementById('sections');
 
+            // Regular categories
             categories.forEach((cat, i) => {
                 const section = document.createElement('div');
                 section.className = 'category-section' + (i === 0 ? ' active' : '');
@@ -504,6 +773,30 @@
                 sectionsEl.appendChild(section);
             });
 
+            // Notes section
+            const notesSection = document.createElement('div');
+            notesSection.className = 'notes-section';
+            notesSection.id = 'section-notes';
+            notesSection.innerHTML = `
+                <div class="section-header">
+                    <span class="emoji">🗒️</span>
+                    <h2>notes for each other</h2>
+                </div>
+                <div style="text-align:center; margin-bottom: 20px;">
+                    <button class="add-note-btn" onclick="openNoteModal()">
+                        <span class="plus">+</span> leave a note
+                    </button>
+                </div>
+                <div class="notes-board" id="notesBoard">
+                    <div class="notes-board-hint" id="notesBoardHint">
+                        <span class="emoji">💌</span>
+                        <p>no notes yet...<br>leave one for each other!</p>
+                    </div>
+                </div>
+            `;
+            sectionsEl.appendChild(notesSection);
+
+            // Enter key support
             document.querySelectorAll('.input-row input').forEach(input => {
                 input.addEventListener('keypress', (e) => {
                     if (e.key === 'Enter') {
@@ -517,12 +810,16 @@
         function switchTab(catId) {
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
             document.querySelector(`.tab[data-cat="${catId}"]`).classList.add('active');
-            document.querySelectorAll('.category-section').forEach(s => s.classList.remove('active'));
+
+            document.querySelectorAll('.category-section, .notes-section').forEach(s => s.classList.remove('active'));
             document.getElementById('section-' + catId).classList.add('active');
-            setTimeout(() => document.getElementById('input-' + catId).focus(), 100);
+
+            if (catId !== 'notes') {
+                setTimeout(() => document.getElementById('input-' + catId).focus(), 100);
+            }
         }
 
-        // ===================== CRUD OPERATIONS =====================
+        // ===================== CRUD =====================
         function addItem(catId) {
             const input = document.getElementById('input-' + catId);
             const text = input.value.trim();
@@ -538,20 +835,17 @@
 
             saveToFirebase();
             input.value = '';
-            playSound('add');
             showToast('added ♡');
         }
 
         function toggleItem(catId, index) {
             localData[catId][index].done = !localData[catId][index].done;
             saveToFirebase();
-            playSound('check');
         }
 
         function deleteItem(catId, index) {
             localData[catId].splice(index, 1);
             saveToFirebase();
-            playSound('delete');
             showToast('removed');
         }
 
@@ -559,7 +853,6 @@
             if (!confirm('Clear all items in this category?')) return;
             localData[catId] = [];
             saveToFirebase();
-            playSound('delete');
         }
 
         // ===================== RENDER =====================
@@ -610,15 +903,7 @@
             const input = document.createElement('input');
             input.type = 'text';
             input.value = currentText;
-            input.style.width = '100%';
-            input.style.border = 'none';
-            input.style.background = 'transparent';
-            input.style.borderBottom = '2px solid #475569';
-            input.style.outline = 'none';
-            input.style.fontFamily = 'Poppins, sans-serif';
-            input.style.fontSize = '0.95em';
-            input.style.color = '#334155';
-
+            input.style.cssText = 'width:100%;border:none;background:transparent;border-bottom:2px solid #475569;outline:none;font-family:Poppins,sans-serif;font-size:0.95em;color:#334155;';
             span.parentNode.replaceChild(input, span);
             input.focus();
 
@@ -627,7 +912,6 @@
                 if (newText && newText !== currentText) {
                     localData[catId][index].text = newText;
                     saveToFirebase();
-                    playSound('add');
                 }
                 renderList(catId);
             };
@@ -636,7 +920,23 @@
             input.addEventListener('keypress', (e) => { if (e.key === 'Enter') input.blur(); });
         }
 
-        // ===================== DRAG & DROP =====================
+        function renderAll() {
+            categories.forEach(cat => renderList(cat.id));
+        }
+
+        function updateTabCount(catId) {
+            const items = localData[catId] || [];
+            const tab = document.querySelector(`.tab[data-cat="${catId}"]`);
+            if (!tab) return;
+            const cat = categories.find(c => c.id === catId);
+            tab.innerHTML = `${cat.emoji} ${cat.name}${items.length > 0 ? `<span class="counter">${items.length}</span>` : ''}`;
+        }
+
+        function updateAllTabCounts() {
+            categories.forEach(cat => updateTabCount(cat.id));
+        }
+
+        // ===================== DRAG & DROP (lists) =====================
         let draggedItem = null;
         let draggedCatId = null;
         let draggedIndex = null;
@@ -674,7 +974,6 @@
             e.preventDefault();
             const target = e.target.closest('.item');
             if (!target || target === draggedItem || target.dataset.cat !== draggedCatId) return;
-
             const items = localData[draggedCatId];
             const [movedItem] = items.splice(draggedIndex, 1);
             const list = target.parentNode;
@@ -682,28 +981,201 @@
             let newIndex = children.indexOf(draggedItem);
             if (draggedIndex < newIndex) newIndex--;
             items.splice(newIndex, 0, movedItem);
-
             saveToFirebase();
-            playSound('add');
         }
 
-        function renderAll() {
-            categories.forEach(cat => renderList(cat.id));
+        // ===================== STICKER NOTES =====================
+        let allStickers = {};
+
+        function openNoteModal() {
+            document.getElementById('noteModalOverlay').classList.add('show');
+            document.getElementById('noteTextarea').value = '';
+            setTimeout(() => document.getElementById('noteTextarea').focus(), 100);
         }
 
-        function updateTabCount(catId) {
-            const items = localData[catId] || [];
-            const tab = document.querySelector(`.tab[data-cat="${catId}"]`);
-            if (!tab) return;
-            const cat = categories.find(c => c.id === catId);
-            tab.innerHTML = `${cat.emoji} ${cat.name}${items.length > 0 ? `<span class="counter">${items.length}</span>` : ''}`;
+        function closeNoteModal() {
+            document.getElementById('noteModalOverlay').classList.remove('show');
         }
 
-        function updateAllTabCounts() {
-            categories.forEach(cat => updateTabCount(cat.id));
+        function postNote() {
+            const text = document.getElementById('noteTextarea').value.trim();
+            if (!text) return;
+
+            const color = noteColors[selectedColor];
+            const board = document.getElementById('notesBoard');
+            const bw = board.offsetWidth || 600;
+            const bh = board.offsetHeight || 500;
+
+            // Random position within board
+            const x = Math.floor(Math.random() * (bw - 200));
+            const y = Math.floor(Math.random() * (bh - 180));
+
+            // Random slight rotation
+            const rotate = (Math.random() * 8 - 4).toFixed(1);
+
+            const noteData = {
+                text: text,
+                color: selectedColor,
+                x: x,
+                y: y,
+                rotate: rotate,
+                date: getDate(),
+                ts: Date.now()
+            };
+
+            notesRef.push(noteData);
+            closeNoteModal();
+            showToast('note posted ♡');
         }
+
+        function renderSticker(id, note) {
+            const board = document.getElementById('notesBoard');
+
+            // Remove if exists
+            const existing = document.getElementById('sticker-' + id);
+            if (existing) existing.remove();
+
+            const color = noteColors[note.color] || noteColors[0];
+
+            const el = document.createElement('div');
+            el.className = 'sticker';
+            el.id = 'sticker-' + id;
+            el.style.cssText = `
+                left: ${note.x}px;
+                top: ${note.y}px;
+                background: ${color.bg};
+                box-shadow: 4px 6px 20px ${color.shadow};
+                transform: rotate(${note.rotate}deg);
+            `;
+
+            el.innerHTML = `
+                <button class="sticker-delete" onclick="deleteSticker('${id}')">✕</button>
+                <span class="sticker-author">${note.date}</span>
+                <textarea readonly>${note.text}</textarea>
+            `;
+
+            // Drag sticker around board
+            makeStickerDraggable(el, id);
+
+            board.appendChild(el);
+
+            // Hide hint
+            const hint = document.getElementById('notesBoardHint');
+            if (hint) hint.style.display = 'none';
+        }
+
+        function makeStickerDraggable(el, id) {
+            let startX, startY, startLeft, startTop;
+            let isDragging = false;
+
+            el.addEventListener('mousedown', (e) => {
+                if (e.target.classList.contains('sticker-delete') || e.target.tagName === 'TEXTAREA') return;
+                isDragging = true;
+                startX = e.clientX;
+                startY = e.clientY;
+                startLeft = parseInt(el.style.left) || 0;
+                startTop = parseInt(el.style.top) || 0;
+                el.classList.add('is-dragging');
+                e.preventDefault();
+            });
+
+            // Touch support
+            el.addEventListener('touchstart', (e) => {
+                if (e.target.classList.contains('sticker-delete') || e.target.tagName === 'TEXTAREA') return;
+                isDragging = true;
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                startLeft = parseInt(el.style.left) || 0;
+                startTop = parseInt(el.style.top) || 0;
+                el.classList.add('is-dragging');
+            }, { passive: true });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                const dx = e.clientX - startX;
+                const dy = e.clientY - startY;
+                const board = document.getElementById('notesBoard');
+                const bw = board.offsetWidth;
+                const bh = board.offsetHeight;
+                const newLeft = Math.max(0, Math.min(bw - 190, startLeft + dx));
+                const newTop = Math.max(0, Math.min(bh - 170, startTop + dy));
+                el.style.left = newLeft + 'px';
+                el.style.top = newTop + 'px';
+            });
+
+            document.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                const dx = e.touches[0].clientX - startX;
+                const dy = e.touches[0].clientY - startY;
+                const board = document.getElementById('notesBoard');
+                const bw = board.offsetWidth;
+                const bh = board.offsetHeight;
+                const newLeft = Math.max(0, Math.min(bw - 190, startLeft + dx));
+                const newTop = Math.max(0, Math.min(bh - 170, startTop + dy));
+                el.style.left = newLeft + 'px';
+                el.style.top = newTop + 'px';
+            }, { passive: true });
+
+            document.addEventListener('mouseup', () => {
+                if (!isDragging) return;
+                isDragging = false;
+                el.classList.remove('is-dragging');
+                // Save new position to Firebase
+                notesRef.child(id).update({
+                    x: parseInt(el.style.left),
+                    y: parseInt(el.style.top)
+                });
+            });
+
+            document.addEventListener('touchend', () => {
+                if (!isDragging) return;
+                isDragging = false;
+                el.classList.remove('is-dragging');
+                notesRef.child(id).update({
+                    x: parseInt(el.style.left),
+                    y: parseInt(el.style.top)
+                });
+            });
+        }
+
+        function deleteSticker(id) {
+            notesRef.child(id).remove();
+            const el = document.getElementById('sticker-' + id);
+            if (el) el.remove();
+            showToast('note removed');
+
+            // Show hint if no stickers left
+            const board = document.getElementById('notesBoard');
+            if (board && board.querySelectorAll('.sticker').length === 0) {
+                const hint = document.getElementById('notesBoardHint');
+                if (hint) hint.style.display = 'block';
+            }
+        }
+
+        // Listen to notes in Firebase
+        notesRef.on('child_added', (snap) => {
+            allStickers[snap.key] = snap.val();
+            renderSticker(snap.key, snap.val());
+        });
+
+        notesRef.on('child_changed', (snap) => {
+            allStickers[snap.key] = snap.val();
+            // Only re-render if text/color changed, not position (handled by drag)
+        });
+
+        notesRef.on('child_removed', (snap) => {
+            delete allStickers[snap.key];
+            const el = document.getElementById('sticker-' + snap.key);
+            if (el) el.remove();
+        });
+
+        // Close modal on overlay click
+        document.getElementById('noteModalOverlay').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('noteModalOverlay')) closeNoteModal();
+        });
 
         // ===================== START =====================
+        buildColorPicker();
         buildTabs();
         buildSections();
     </script>

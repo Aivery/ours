@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ours ♡</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 30%, #e2e8f0 70%, #f8fafc 100%);
+            min-height: 100vh;
+            color: #334155;
+            padding: 20px;
+            user-select: none;
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px 0 10px;
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            background: linear-gradient(135deg, #475569, #1e293b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .header p {
+            color: #94a3b8;
+            font-size: 0.95em;
+            margin-top: 5px;
+        }
+
+        .sync-status {
+            text-align: center;
+            font-size: 0.75em;
+            color: #94a3b8;
+            margin-top: 5px;
+        }
+
+        .sync-status .dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        .dot.online { background: #22c55e; }
+        .dot.offline { background: #ef4444; }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin: 25px 0 30px;
+        }
+
+        .tab {
+            padding: 10px 18px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.6);
+            color: #64748b;
+            backdrop-filter: blur(10px);
+        }
+
+        .tab:hover {
+            background: rgba(255,255,255,0.9);
+            transform: translateY(-2px);
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, #475569, #1e293b);
+            color: white;
+            box-shadow: 0 4px 15px rgba(71, 85, 105, 0.3);
+        }
+
+        .category-section { display: none; }
+
+        .category-section.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .section-header .emoji {
+            font-size: 2.5em;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .section-header h2 {
+            font-size: 1.3em;
+            color: #334155;
+            font-weight: 600;
+        }
+
+        .input-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .input-row input {
+            flex: 1;
+            padding: 14px 20px;
+            border: 2px solid rgba(100, 116, 139, 0.15);
+            border-radius: 16px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95em;
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            outline: none;
+            color: #334155;
+        }
+
+        .input-row input:focus {
+            border-color: #64748b;
+            box-shadow: 0 0 0 4px rgba(100, 116, 139, 0.1);
+            background: white;
+        }
+
+        .add-btn {
+            padding: 14px 24px;
+            background: linear-gradient(135deg, #475569, #1e293b);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .add-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(71, 85, 105, 0.35);
+        }
+
+        .add-btn:active { transform: scale(0.97); }
+
+        .items-list {
+            list-style: none;
+            min-height: 50px;
+        }
+
+        .item {
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 16px 20px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.9);
+            cursor: grab;
+            position: relative;
+        }
+
+        .item:hover {
+            background: rgba(255,255,255,0.95);
+            transform: translateX(4px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .item.dragging { opacity: 0.5; transform: scale(0.98); cursor: grabbing; }
+        .item.done { opacity: 0.5; }
+        .item.done .item-text { text-decoration: line-through; color: #94a3b8; }
+
+        .check-btn {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid #cbd5e1;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            z-index: 2;
+        }
+
+        .check-btn:hover { border-color: #64748b; background: rgba(100, 116, 139, 0.1); }
+
+        .check-btn.checked {
+            background: linear-gradient(135deg, #475569, #1e293b);
+            border-color: transparent;
+            color: white;
+        }
+
+        .item-text {
+            flex: 1;
+            font-size: 0.95em;
+            word-break: break-word;
+            cursor: text;
+            user-select: text;
+        }
+
+        .item-meta {
+            font-size: 0.75em;
+            color: #94a3b8;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        .delete-btn {
+            background: none;
+            border: none;
+            color: #cbd5e1;
+            cursor: pointer;
+            font-size: 1.2em;
+            padding: 4px;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            z-index: 2;
+        }
+
+        .delete-btn:hover { color: #ef4444; background: rgba(239, 68, 68, 0.1); }
+
+        .clear-all { text-align: center; margin-top: 15px; }
+
+        .clear-all button {
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 0.8em;
+            cursor: pointer;
+            text-decoration: underline;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .clear-all button:hover { color: #64748b; }
+
+        .empty-state {
+            text-align: center;
+            padding: 50px 20px;
+            color: #94a3b8;
+        }
+
+        .empty-state .emoji {
+            font-size: 3em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .counter {
+            display: inline-block;
+            background: rgba(100, 116, 139, 0.15);
+            color: #475569;
+            font-size: 0.7em;
+            padding: 2px 8px;
+            border-radius: 50px;
+            margin-left: 6px;
+            font-weight: 600;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #94a3b8;
+            font-size: 0.85em;
+        }
+
+        @media (max-width: 500px) {
+            .header h1 { font-size: 1.8em; }
+            .tabs { gap: 6px; }
+            .tab { padding: 8px 14px; font-size: 0.8em; }
+            .input-row { flex-direction: column; }
+            .add-btn { text-align: center; }
+            body { padding: 12px; }
+            .item { padding: 12px 16px; }
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: linear-gradient(135deg, #475569, #1e293b);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 0.9em;
+            font-weight: 500;
+            box-shadow: 0 8px 30px rgba(71, 85, 105, 0.3);
+            transition: transform 0.4s ease;
+            z-index: 999;
+            pointer-events: none;
+        }
+
+        .toast.show { transform: translateX(-50%) translateY(0); }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>ours ♡</h1>
+            <p>all the things we wanna do together</p>
+            <div class="sync-status" id="syncStatus">
+                <span class="dot offline"></span> connecting...
+            </div>
+        </div>
+
+        <div class="tabs" id="tabs"></div>
+        <div id="sections"></div>
+        <div class="footer">A&A 2026</div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+    <script>
+        // ===================== FIREBASE CONFIG =====================
+        const firebaseConfig = {
+            apiKey: "AIzaSyCDAmRuuUKsJMjaYyvDBsmETeo4cr11vW8",
+            authDomain: "ours-752bf.firebaseapp.com",
+            databaseURL: "https://ours-752bf-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "ours-752bf",
+            storageBucket: "ours-752bf.firebasestorage.app",
+            messagingSenderId: "480212666124",
+            appId: "1:480212666124:web:2147a3cc901ff2f1be2b29",
+            measurementId: "G-NB92NDV32Q"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+        const dataRef = db.ref('tracker-data');
+
+        // Connection status
+        firebase.database().ref('.info/connected').on('value', (snap) => {
+            const status = document.getElementById('syncStatus');
+            if (snap.val() === true) {
+                status.innerHTML = '<span class="dot online"></span> synced ♡';
+            } else {
+                status.innerHTML = '<span class="dot offline"></span> offline';
+            }
+        });
+
+        // ===================== SOUND EFFECTS =====================
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playSound(type) {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const oscillator = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            oscillator.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            const now = audioCtx.currentTime;
+
+            if (type === 'add') {
+                oscillator.type = 'sine';
+                oscillator.frequency.setValueAtTime(520, now);
+                oscillator.frequency.exponentialRampToValueAtTime(750, now + 0.1);
+                gainNode.gain.setValueAtTime(0.1, now);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
+                oscillator.start(now); oscillator.stop(now + 0.15);
+            } else if (type === 'check') {
+                oscillator.type = 'triangle';
+                oscillator.frequency.setValueAtTime(300, now);
+                gainNode.gain.setValueAtTime(0.1, now);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
+                oscillator.start(now); oscillator.stop(now + 0.15);
+            } else if (type === 'delete') {
+                oscillator.type = 'sine';
+                oscillator.frequency.setValueAtTime(150, now);
+                oscillator.frequency.exponentialRampToValueAtTime(50, now + 0.1);
+                gainNode.gain.setValueAtTime(0.1, now);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
+                oscillator.start(now); oscillator.stop(now + 0.15);
+            } else if (type === 'switch') {
+                oscillator.type = 'square';
+                oscillator.frequency.setValueAtTime(200, now);
+                gainNode.gain.setValueAtTime(0.03, now);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+                oscillator.start(now); oscillator.stop(now + 0.06);
+            }
+        }
+
+        // ===================== CATEGORIES =====================
+        const categories = [
+            { id: 'places',  name: 'places',      emoji: '📍', placeholder: 'cafe, city, park...',           emptyEmoji: '🗺️',  emptyText: 'no places yet... where should we go?' },
+            { id: 'movies',  name: 'movies',       emoji: '🎬', placeholder: 'movie or show name...',        emptyEmoji: '🍿',  emptyText: 'nothing here yet... lets pick something!' },
+            { id: 'dates',   name: 'date ideas',   emoji: '💕', placeholder: 'something fun or cute...',     emptyEmoji: '✨',   emptyText: 'add our first date idea!' },
+            { id: 'todos',   name: 'to do',        emoji: '✅', placeholder: 'stuff we need to do...',       emptyEmoji: '📝',  emptyText: 'nothing to do? thats suspicious' },
+            { id: 'books',   name: 'books',        emoji: '📚', placeholder: 'title or author...',           emptyEmoji: '📖',  emptyText: 'empty shelf... lets fix that' },
+            { id: 'recipes', name: 'recipes',      emoji: '🍳', placeholder: 'dish name or link...',         emptyEmoji: '👨‍🍳', emptyText: 'no recipes yet... im hungry tho' },
+            { id: 'dreams',  name: 'dreams',       emoji: '🌙', placeholder: 'the crazier the better...',    emptyEmoji: '💫',  emptyText: 'dream big baby... add something' },
+            { id: 'random',  name: 'random',       emoji: '🎲', placeholder: 'anything else...',             emptyEmoji: '🤷',  emptyText: 'this is for the stuff that doesnt fit anywhere' }
+        ];
+
+        // ===================== LOCAL CACHE =====================
+        let localData = {};
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.textContent = msg;
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 2000);
+        }
+
+        function getDate() {
+            const d = new Date();
+            const months = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+            return `${months[d.getMonth()]} ${d.getDate()}`;
+        }
+
+        // ===================== FIREBASE SYNC =====================
+        // Listen for ALL changes in real-time
+        dataRef.on('value', (snapshot) => {
+            localData = snapshot.val() || {};
+            renderAll();
+            updateAllTabCounts();
+        });
+
+        function saveToFirebase() {
+            dataRef.set(localData);
+        }
+
+        // ===================== BUILD UI =====================
+        function buildTabs() {
+            const tabsEl = document.getElementById('tabs');
+
+            categories.forEach((cat, i) => {
+                const btn = document.createElement('button');
+                btn.className = 'tab' + (i === 0 ? ' active' : '');
+                btn.dataset.cat = cat.id;
+
+                const items = localData[cat.id] || [];
+                btn.innerHTML = `${cat.emoji} ${cat.name}${items.length > 0 ? `<span class="counter">${items.length}</span>` : ''}`;
+
+                btn.addEventListener('click', () => {
+                    playSound('switch');
+                    switchTab(cat.id);
+                });
+                tabsEl.appendChild(btn);
+            });
+        }
+
+        function buildSections() {
+            const sectionsEl = document.getElementById('sections');
+
+            categories.forEach((cat, i) => {
+                const section = document.createElement('div');
+                section.className = 'category-section' + (i === 0 ? ' active' : '');
+                section.id = 'section-' + cat.id;
+
+                section.innerHTML = `
+                    <div class="section-header">
+                        <span class="emoji">${cat.emoji}</span>
+                        <h2>${cat.name}</h2>
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input-${cat.id}" placeholder="${cat.placeholder}">
+                        <button class="add-btn" onclick="addItem('${cat.id}')">add +</button>
+                    </div>
+                    <ul class="items-list" id="list-${cat.id}"></ul>
+                    <div class="clear-all">
+                        <button onclick="clearAll('${cat.id}')">clear all</button>
+                    </div>
+                `;
+
+                sectionsEl.appendChild(section);
+            });
+
+            document.querySelectorAll('.input-row input').forEach(input => {
+                input.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        const catId = input.id.replace('input-', '');
+                        addItem(catId);
+                    }
+                });
+            });
+        }
+
+        function switchTab(catId) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelector(`.tab[data-cat="${catId}"]`).classList.add('active');
+            document.querySelectorAll('.category-section').forEach(s => s.classList.remove('active'));
+            document.getElementById('section-' + catId).classList.add('active');
+            setTimeout(() => document.getElementById('input-' + catId).focus(), 100);
+        }
+
+        // ===================== CRUD OPERATIONS =====================
+        function addItem(catId) {
+            const input = document.getElementById('input-' + catId);
+            const text = input.value.trim();
+            if (!text) return;
+
+            if (!localData[catId]) localData[catId] = [];
+
+            localData[catId].unshift({
+                text: text,
+                done: false,
+                date: getDate()
+            });
+
+            saveToFirebase();
+            input.value = '';
+            playSound('add');
+            showToast('added ♡');
+        }
+
+        function toggleItem(catId, index) {
+            localData[catId][index].done = !localData[catId][index].done;
+            saveToFirebase();
+            playSound('check');
+        }
+
+        function deleteItem(catId, index) {
+            localData[catId].splice(index, 1);
+            saveToFirebase();
+            playSound('delete');
+            showToast('removed');
+        }
+
+        function clearAll(catId) {
+            if (!confirm('Clear all items in this category?')) return;
+            localData[catId] = [];
+            saveToFirebase();
+            playSound('delete');
+        }
+
+        // ===================== RENDER =====================
+        function renderList(catId) {
+            const items = localData[catId] || [];
+            const list = document.getElementById('list-' + catId);
+            const cat = categories.find(c => c.id === catId);
+
+            if (items.length === 0) {
+                list.innerHTML = `
+                    <div class="empty-state">
+                        <span class="emoji">${cat.emptyEmoji}</span>
+                        <p>${cat.emptyText}</p>
+                    </div>
+                `;
+                return;
+            }
+
+            list.innerHTML = '';
+
+            items.forEach((item, i) => {
+                const li = document.createElement('li');
+                li.className = `item ${item.done ? 'done' : ''}`;
+                li.draggable = true;
+                li.dataset.index = i;
+                li.dataset.cat = catId;
+
+                li.innerHTML = `
+                    <button class="check-btn ${item.done ? 'checked' : ''}" onclick="toggleItem('${catId}', ${i})">
+                        ${item.done ? '✓' : ''}
+                    </button>
+                    <span class="item-text" ondblclick="enableEdit(this, '${catId}', ${i})">${item.text}</span>
+                    <span class="item-meta">${item.date}</span>
+                    <button class="delete-btn" onclick="deleteItem('${catId}', ${i})">×</button>
+                `;
+
+                li.addEventListener('dragstart', handleDragStart);
+                li.addEventListener('dragend', handleDragEnd);
+                li.addEventListener('dragover', handleDragOver);
+                li.addEventListener('drop', handleDrop);
+
+                list.appendChild(li);
+            });
+        }
+
+        function enableEdit(span, catId, index) {
+            const currentText = span.innerText;
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.value = currentText;
+            input.style.width = '100%';
+            input.style.border = 'none';
+            input.style.background = 'transparent';
+            input.style.borderBottom = '2px solid #475569';
+            input.style.outline = 'none';
+            input.style.fontFamily = 'Poppins, sans-serif';
+            input.style.fontSize = '0.95em';
+            input.style.color = '#334155';
+
+            span.parentNode.replaceChild(input, span);
+            input.focus();
+
+            const saveEdit = () => {
+                const newText = input.value.trim();
+                if (newText && newText !== currentText) {
+                    localData[catId][index].text = newText;
+                    saveToFirebase();
+                    playSound('add');
+                }
+                renderList(catId);
+            };
+
+            input.addEventListener('blur', saveEdit);
+            input.addEventListener('keypress', (e) => { if (e.key === 'Enter') input.blur(); });
+        }
+
+        // ===================== DRAG & DROP =====================
+        let draggedItem = null;
+        let draggedCatId = null;
+        let draggedIndex = null;
+
+        function handleDragStart(e) {
+            draggedItem = this;
+            draggedCatId = this.dataset.cat;
+            draggedIndex = parseInt(this.dataset.index);
+            this.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+        }
+
+        function handleDragEnd(e) {
+            this.classList.remove('dragging');
+            draggedItem = null;
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+            const target = e.target.closest('.item');
+            if (target && target !== draggedItem && target.dataset.cat === draggedCatId) {
+                const list = target.parentNode;
+                const children = Array.from(list.children);
+                const targetIndex = children.indexOf(target);
+                if (draggedIndex < targetIndex) {
+                    list.insertBefore(draggedItem, target.nextSibling);
+                } else {
+                    list.insertBefore(draggedItem, target);
+                }
+            }
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            const target = e.target.closest('.item');
+            if (!target || target === draggedItem || target.dataset.cat !== draggedCatId) return;
+
+            const items = localData[draggedCatId];
+            const [movedItem] = items.splice(draggedIndex, 1);
+            const list = target.parentNode;
+            const children = Array.from(list.children);
+            let newIndex = children.indexOf(draggedItem);
+            if (draggedIndex < newIndex) newIndex--;
+            items.splice(newIndex, 0, movedItem);
+
+            saveToFirebase();
+            playSound('add');
+        }
+
+        function renderAll() {
+            categories.forEach(cat => renderList(cat.id));
+        }
+
+        function updateTabCount(catId) {
+            const items = localData[catId] || [];
+            const tab = document.querySelector(`.tab[data-cat="${catId}"]`);
+            if (!tab) return;
+            const cat = categories.find(c => c.id === catId);
+            tab.innerHTML = `${cat.emoji} ${cat.name}${items.length > 0 ? `<span class="counter">${items.length}</span>` : ''}`;
+        }
+
+        function updateAllTabCounts() {
+            categories.forEach(cat => updateTabCount(cat.id));
+        }
+
+        // ===================== START =====================
+        buildTabs();
+        buildSections();
+    </script>
+</body>
+</html>

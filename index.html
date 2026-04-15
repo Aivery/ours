@@ -9,7 +9,6 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* ===================== DARK THEME (default) ===================== */
         body {
             font-family: 'Poppins', sans-serif;
             background: #0a0a0f;
@@ -31,7 +30,6 @@
             background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%);
             pointer-events: none;
             z-index: 0;
-            transition: opacity 0.4s ease;
         }
 
         body::after {
@@ -44,10 +42,8 @@
             background: radial-gradient(circle, rgba(99,102,241,0.1) 0%, transparent 70%);
             pointer-events: none;
             z-index: 0;
-            transition: opacity 0.4s ease;
         }
 
-        /* ===================== LIGHT THEME ===================== */
         body.light {
             background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 30%, #e2e8f0 70%, #f8fafc 100%);
             color: #334155;
@@ -61,7 +57,6 @@
             background: radial-gradient(circle, rgba(99,102,241,0.06) 0%, transparent 70%);
         }
 
-        /* ===================== CONTAINER ===================== */
         .container {
             max-width: 700px;
             margin: 0 auto;
@@ -69,7 +64,6 @@
             z-index: 1;
         }
 
-        /* ===================== HEADER ===================== */
         .header {
             text-align: center;
             padding: 40px 0 10px;
@@ -84,9 +78,7 @@
             transition: color 0.4s ease;
         }
 
-        body.light .header h1 {
-            color: #1e293b;
-        }
+        body.light .header h1 { color: #1e293b; }
 
         .header h1 span {
             background: linear-gradient(135deg, #60a5fa, #818cf8);
@@ -104,9 +96,7 @@
             transition: color 0.4s ease;
         }
 
-        body.light .header p {
-            color: #64748b;
-        }
+        body.light .header p { color: #64748b; }
 
         .sync-status {
             text-align: center;
@@ -115,7 +105,6 @@
             margin-top: 8px;
             letter-spacing: 0.5px;
             font-family: 'Poppins', sans-serif;
-            transition: color 0.4s ease;
         }
 
         body.light .sync-status { color: #94a3b8; }
@@ -129,7 +118,11 @@
             vertical-align: middle;
         }
 
-        .dot.online { background: #3b82f6; box-shadow: 0 0 8px rgba(59,130,246,0.8); }
+        .dot.online {
+            background: #60a5fa;
+            box-shadow: 0 0 12px rgba(59,130,246,1), 0 0 20px rgba(59,130,246,0.6);
+        }
+
         .dot.offline { background: #475569; }
 
         /* ===================== TABS ===================== */
@@ -151,7 +144,7 @@
             font-weight: 500;
             transition: all 0.3s ease;
             background: rgba(255,255,255,0.03);
-            color: #64748b;
+            color: #cbd5e1;
             backdrop-filter: blur(10px);
             letter-spacing: 0.3px;
             position: relative;
@@ -175,15 +168,16 @@
         }
 
         .tab.active {
-            background: rgba(59,130,246,0.12);
+            background: rgba(59,130,246,0.18);
             color: #ffffff;
-            border-color: rgba(59,130,246,0.35);
-            box-shadow: 0 0 20px rgba(59,130,246,0.15);
+            border-color: rgba(59,130,246,0.5);
+            box-shadow: 0 0 25px rgba(59,130,246,0.35), 0 0 50px rgba(59,130,246,0.15);
         }
 
         body.light .tab.active {
             color: #1e293b;
             background: rgba(59,130,246,0.1);
+            box-shadow: 0 0 15px rgba(59,130,246,0.2);
         }
 
         /* Badge */
@@ -196,7 +190,7 @@
             border-radius: 50px;
             background: rgba(15,23,42,0.9);
             border: 1.5px solid rgba(59,130,246,0.8);
-            box-shadow: 0 0 8px rgba(59,130,246,0.6), 0 0 16px rgba(59,130,246,0.3);
+            box-shadow: 0 0 10px rgba(59,130,246,0.9), 0 0 25px rgba(59,130,246,0.5);
             color: #ffffff;
             font-size: 0.6em;
             font-weight: 700;
@@ -214,8 +208,8 @@
         }
 
         @keyframes badgePulse {
-            0%, 100% { box-shadow: 0 0 8px rgba(59,130,246,0.6), 0 0 16px rgba(59,130,246,0.3); }
-            50% { box-shadow: 0 0 12px rgba(59,130,246,0.9), 0 0 24px rgba(59,130,246,0.5); }
+            0%, 100% { box-shadow: 0 0 10px rgba(59,130,246,0.9), 0 0 25px rgba(59,130,246,0.5); }
+            50% { box-shadow: 0 0 18px rgba(59,130,246,1), 0 0 40px rgba(59,130,246,0.7); }
         }
 
         /* ===================== SECTIONS ===================== */
@@ -284,9 +278,7 @@
             box-shadow: 0 0 0 3px rgba(59,130,246,0.08);
         }
 
-        body.light .input-row input:focus {
-            background: white;
-        }
+        body.light .input-row input:focus { background: white; }
 
         .add-btn {
             padding: 14px 22px;
@@ -310,8 +302,8 @@
         }
 
         .add-btn:hover {
-            background: rgba(59,130,246,0.25);
-            box-shadow: 0 0 20px rgba(59,130,246,0.2);
+            background: rgba(59,130,246,0.3);
+            box-shadow: 0 0 30px rgba(59,130,246,0.45), 0 0 60px rgba(59,130,246,0.2);
             transform: translateY(-1px);
         }
 
@@ -379,13 +371,16 @@
         }
 
         .check-btn.checked {
-            background: rgba(59,130,246,0.2);
-            border-color: #3b82f6;
+            background: rgba(59,130,246,0.25);
+            border-color: #60a5fa;
             color: #ffffff;
-            box-shadow: 0 0 10px rgba(59,130,246,0.3);
+            box-shadow: 0 0 15px rgba(59,130,246,0.7), 0 0 30px rgba(59,130,246,0.3);
         }
 
-        body.light .check-btn.checked { color: #1e40af; }
+        body.light .check-btn.checked {
+            color: #1e40af;
+            box-shadow: 0 0 10px rgba(59,130,246,0.3);
+        }
 
         .item-text {
             flex: 1;
@@ -402,7 +397,7 @@
 
         .item-meta {
             font-size: 0.7em;
-            color: #1e293b;
+            color: #475569;
             white-space: nowrap;
             pointer-events: none;
             font-family: 'Poppins', sans-serif;
@@ -413,7 +408,7 @@
         .delete-btn {
             background: none;
             border: none;
-            color: #1e293b;
+            color: #475569;
             cursor: pointer;
             font-size: 1.1em;
             padding: 4px;
@@ -425,19 +420,18 @@
         body.light .delete-btn { color: #cbd5e1; }
 
         .delete-btn:hover {
-            color: #3b82f6;
+            color: #60a5fa;
             background: rgba(59,130,246,0.1);
         }
 
         body.light .delete-btn:hover { color: #ef4444; background: rgba(239,68,68,0.1); }
 
-        /* Clear all */
         .clear-all { text-align: center; margin-top: 15px; }
 
         .clear-all button {
             background: none;
             border: none;
-            color: #1e293b;
+            color: #334155;
             font-size: 0.75em;
             cursor: pointer;
             text-decoration: underline;
@@ -447,9 +441,8 @@
         }
 
         body.light .clear-all button { color: #94a3b8; }
-        .clear-all button:hover { color: #475569; }
+        .clear-all button:hover { color: #64748b; }
 
-        /* Empty state */
         .empty-state {
             text-align: center;
             padding: 50px 20px;
@@ -498,7 +491,7 @@
             cursor: pointer;
             position: relative;
             transition: all 0.3s ease;
-            box-shadow: 0 0 12px rgba(59,130,246,0.15);
+            box-shadow: 0 0 15px rgba(59,130,246,0.25);
         }
 
         body.light .toggle-switch {
@@ -517,7 +510,7 @@
             top: 3px;
             left: 3px;
             transition: all 0.3s ease;
-            box-shadow: 0 0 8px rgba(59,130,246,0.6);
+            box-shadow: 0 0 10px rgba(59,130,246,0.8), 0 0 20px rgba(59,130,246,0.4);
         }
 
         body.light .toggle-switch::after {
@@ -526,15 +519,11 @@
             box-shadow: none;
         }
 
-        .toggle-icon {
-            font-size: 1em;
-        }
-
         /* ===================== FOOTER ===================== */
         .footer {
             text-align: center;
             padding: 10px 20px 20px;
-            color: #1e293b;
+            color: #334155;
             font-size: 0.8em;
             letter-spacing: 1px;
             font-family: 'Poppins', sans-serif;
@@ -556,7 +545,7 @@
             border-radius: 50px;
             font-size: 0.85em;
             font-weight: 500;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4), 0 0 20px rgba(59,130,246,0.15);
             transition: transform 0.4s ease;
             z-index: 999;
             pointer-events: none;
@@ -603,7 +592,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
-            color: #1e293b;
+            color: #334155;
             pointer-events: none;
             font-size: 0.85em;
             font-family: 'Poppins', sans-serif;
@@ -643,13 +632,12 @@
 
         .add-note-btn:hover {
             background: rgba(59,130,246,0.2);
-            box-shadow: 0 0 25px rgba(59,130,246,0.2);
+            box-shadow: 0 0 30px rgba(59,130,246,0.4), 0 0 60px rgba(59,130,246,0.15);
             transform: translateY(-2px);
         }
 
         .add-note-btn .plus { font-size: 1.3em; font-weight: 300; line-height: 1; }
 
-        /* Sticker */
         .sticker {
             position: absolute;
             width: 185px;
@@ -737,8 +725,7 @@
             padding: 30px;
             width: 90%;
             max-width: 400px;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.5);
-            transition: background 0.4s ease;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.5), 0 0 40px rgba(59,130,246,0.1);
         }
 
         body.light .note-modal {
@@ -755,7 +742,6 @@
             letter-spacing: 1px;
             font-weight: 500;
             font-family: 'Poppins', sans-serif;
-            transition: color 0.4s ease;
         }
 
         body.light .note-modal h3 { color: #334155; }
@@ -787,7 +773,7 @@
             box-shadow: 0 0 0 3px rgba(59,130,246,0.08);
         }
 
-        .note-modal textarea::placeholder { color: #1e293b; }
+        .note-modal textarea::placeholder { color: #334155; }
         body.light .note-modal textarea::placeholder { color: #94a3b8; }
 
         .note-color-picker {
@@ -852,7 +838,7 @@
 
         .btn-post:hover {
             background: rgba(59,130,246,0.25);
-            box-shadow: 0 0 20px rgba(59,130,246,0.2);
+            box-shadow: 0 0 25px rgba(59,130,246,0.4);
         }
 
         /* Mobile */
@@ -880,11 +866,10 @@
         <div class="tabs" id="tabs"></div>
         <div id="sections"></div>
 
-        <!-- Theme Toggle -->
         <div class="theme-toggle">
-            <span class="toggle-icon">🌙</span>
+            <span>🌙</span>
             <div class="toggle-switch" id="themeToggle" onclick="toggleTheme()"></div>
-            <span class="toggle-icon">☀️</span>
+            <span>☀️</span>
         </div>
 
         <div class="footer">A&A 2026</div>
@@ -940,23 +925,20 @@
             localStorage.setItem('ours-theme', isLight ? 'light' : 'dark');
         }
 
-        // Load saved theme
         const savedTheme = localStorage.getItem('ours-theme');
-        if (savedTheme === 'light') {
-            document.body.classList.add('light');
-        }
+        if (savedTheme === 'light') document.body.classList.add('light');
 
         // ===================== CATEGORIES =====================
         const categories = [
-            { id: 'places',  name: 'places',     placeholder: 'cafe, city, park...',         emptyEmoji: '🗺️', emptyText: 'no places yet... where should we go?' },
-            { id: 'movies',  name: 'movies',      placeholder: 'movie or show name...',       emptyEmoji: '🍿', emptyText: 'nothing here yet... lets pick something!' },
-            { id: 'dates',   name: 'date ideas',  placeholder: 'something fun or cute...',    emptyEmoji: '✨', emptyText: 'add our first date idea!' },
-            { id: 'todos',   name: 'to do',       placeholder: 'stuff we need to do...',      emptyEmoji: '📝', emptyText: 'nothing to do? thats suspicious' },
-            { id: 'books',   name: 'books',       placeholder: 'title or author...',          emptyEmoji: '📖', emptyText: 'empty shelf... lets fix that' },
-            { id: 'recipes', name: 'recipes',     placeholder: 'dish name or link...',        emptyEmoji: '👨‍🍳', emptyText: 'no recipes yet... im hungry tho' },
-            { id: 'dreams',  name: 'dreams',      placeholder: 'the crazier the better...',  emptyEmoji: '💫', emptyText: 'dream big baby... add something' },
-            { id: 'games',   name: 'games',       placeholder: 'game name or idea...',        emptyEmoji: '🕹️', emptyText: 'no games yet... what should we play?' },
-            { id: 'random',  name: 'random',      placeholder: 'anything else...',            emptyEmoji: '🤷', emptyText: 'this is for the stuff that doesnt fit anywhere' }
+            { id: 'places',  name: 'places',     placeholder: 'cafe, city, park...',        emptyEmoji: '🗺️', emptyText: 'no places yet... where should we go?' },
+            { id: 'movies',  name: 'movies',      placeholder: 'movie or show name...',      emptyEmoji: '🍿', emptyText: 'nothing here yet... lets pick something!' },
+            { id: 'dates',   name: 'date ideas',  placeholder: 'something fun or cute...',   emptyEmoji: '✨', emptyText: 'add our first date idea!' },
+            { id: 'todos',   name: 'to do',       placeholder: 'stuff we need to do...',     emptyEmoji: '📝', emptyText: 'nothing to do? thats suspicious' },
+            { id: 'books',   name: 'books',       placeholder: 'title or author...',         emptyEmoji: '📖', emptyText: 'empty shelf... lets fix that' },
+            { id: 'recipes', name: 'recipes',     placeholder: 'dish name or link...',       emptyEmoji: '👨‍🍳', emptyText: 'no recipes yet... im hungry tho' },
+            { id: 'dreams',  name: 'dreams',      placeholder: 'the crazier the better...', emptyEmoji: '💫', emptyText: 'dream big baby... add something' },
+            { id: 'games',   name: 'games',       placeholder: 'game name or idea...',       emptyEmoji: '🕹️', emptyText: 'no games yet... what should we play?' },
+            { id: 'random',  name: 'random',      placeholder: 'anything else...',           emptyEmoji: '🤷', emptyText: 'this is for the stuff that doesnt fit anywhere' }
         ];
 
         // ===================== NOTE COLORS =====================
@@ -1038,7 +1020,6 @@
         // ===================== BUILD UI =====================
         function buildTabs() {
             const tabsEl = document.getElementById('tabs');
-
             categories.forEach((cat, i) => {
                 const btn = document.createElement('button');
                 btn.className = 'tab' + (i === 0 ? ' active' : '');
@@ -1063,11 +1044,8 @@
                 const section = document.createElement('div');
                 section.className = 'category-section' + (i === 0 ? ' active' : '');
                 section.id = 'section-' + cat.id;
-
                 section.innerHTML = `
-                    <div class="section-header">
-                        <h2>${cat.name}</h2>
-                    </div>
+                    <div class="section-header"><h2>${cat.name}</h2></div>
                     <div class="input-row">
                         <input type="text" id="input-${cat.id}" placeholder="${cat.placeholder}">
                         <button class="add-btn" onclick="addItem('${cat.id}')">add +</button>
@@ -1084,9 +1062,7 @@
             notesSection.className = 'notes-section';
             notesSection.id = 'section-notes';
             notesSection.innerHTML = `
-                <div class="section-header">
-                    <h2>notes</h2>
-                </div>
+                <div class="section-header"><h2>notes</h2></div>
                 <div style="text-align:center; margin-bottom: 20px;">
                     <button class="add-note-btn" onclick="openNoteModal()">
                         <span class="plus">+</span> leave a note
@@ -1103,9 +1079,7 @@
 
             document.querySelectorAll('.input-row input').forEach(input => {
                 input.addEventListener('keypress', (e) => {
-                    if (e.key === 'Enter') {
-                        addItem(input.id.replace('input-', ''));
-                    }
+                    if (e.key === 'Enter') addItem(input.id.replace('input-', ''));
                 });
             });
         }

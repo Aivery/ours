@@ -9,6 +9,7 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
+        /* ===================== THEME ===================== */
         body {
             font-family: 'Poppins', sans-serif;
             background: #0a0a0f;
@@ -21,27 +22,15 @@
         }
 
         body::before {
-            content: '';
-            position: fixed;
-            top: -200px;
-            left: -200px;
-            width: 600px;
-            height: 600px;
+            content: ''; position: fixed; top: -200px; left: -200px; width: 600px; height: 600px;
             background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
+            pointer-events: none; z-index: 0;
         }
 
         body::after {
-            content: '';
-            position: fixed;
-            bottom: -200px;
-            right: -200px;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(99,102,241,0.1) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
+            content: ''; position: fixed; bottom: -200px; right: -200px; width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(168,85,247,0.12) 0%, transparent 70%);
+            pointer-events: none; z-index: 0;
         }
 
         body.light {
@@ -50,313 +39,180 @@
         }
 
         body.light::before { background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%); }
-        body.light::after { background: radial-gradient(circle, rgba(99,102,241,0.06) 0%, transparent 70%); }
+        body.light::after { background: radial-gradient(circle, rgba(168,85,247,0.06) 0%, transparent 70%); }
 
-        .container {
-            max-width: 700px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
+        .container { max-width: 700px; margin: 0 auto; position: relative; z-index: 1; }
 
-        .header {
-            text-align: center;
-            padding: 40px 0 10px;
-        }
-
+        /* ===================== HEADER ===================== */
+        .header { text-align: center; padding: 40px 0 10px; }
         .header h1 {
-            font-size: 2.5em;
-            font-weight: 700;
-            color: #fff;
-            letter-spacing: 2px;
-            font-family: 'Poppins', sans-serif;
-            transition: color 0.4s ease;
+            font-size: 2.5em; font-weight: 700; color: #fff;
+            letter-spacing: 2px; font-family: 'Poppins', sans-serif; transition: color 0.4s ease;
         }
-
         body.light .header h1 { color: #1e293b; }
-
         .header h1 span {
-            background: linear-gradient(135deg, #60a5fa, #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            background: linear-gradient(135deg, #60a5fa, #c084fc);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
-
         .header p {
-            color: #475569;
-            font-size: 1.4em;
-            margin-top: 6px;
-            letter-spacing: 1px;
-            font-family: 'Qwigley', cursive;
-            transition: color 0.4s ease;
+            color: #475569; font-size: 1.4em; margin-top: 6px;
+            letter-spacing: 1px; font-family: 'Qwigley', cursive; transition: color 0.4s ease;
         }
-
         body.light .header p { color: #64748b; }
 
         .sync-status {
-            text-align: center;
-            font-size: 0.72em;
-            color: #475569;
-            margin-top: 8px;
-            letter-spacing: 0.5px;
-            font-family: 'Poppins', sans-serif;
+            text-align: center; font-size: 0.72em; color: #475569;
+            margin-top: 8px; letter-spacing: 0.5px; font-family: 'Poppins', sans-serif;
         }
-
         body.light .sync-status { color: #94a3b8; }
-
         .sync-status .dot {
-            display: inline-block;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            margin-right: 5px;
-            vertical-align: middle;
+            display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+            margin-right: 5px; vertical-align: middle;
         }
-
         .dot.online { background: #60a5fa; box-shadow: 0 0 12px rgba(59,130,246,1), 0 0 20px rgba(59,130,246,0.6); }
         .dot.offline { background: #475569; }
 
-        /* ===================== TABS ===================== */
-        .tabs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            justify-content: center;
-            margin: 30px 0;
-        }
+        /* ===================== MAIN TABS ===================== */
+        .tabs { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 30px 0 10px; }
 
         .tab {
-            padding: 9px 18px;
-            border-radius: 50px;
-            border: 1px solid rgba(255,255,255,0.06);
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.8em;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            background: rgba(255,255,255,0.03);
-            color: #cbd5e1;
-            backdrop-filter: blur(10px);
-            letter-spacing: 0.3px;
-            position: relative;
+            padding: 9px 18px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.06);
+            cursor: pointer; font-family: 'Poppins', sans-serif; font-size: 0.8em; font-weight: 500;
+            transition: all 0.3s ease; background: rgba(255,255,255,0.03); color: #cbd5e1;
+            backdrop-filter: blur(10px); letter-spacing: 0.3px; position: relative;
         }
-
-        body.light .tab {
-            border-color: rgba(100,116,139,0.15);
-            background: rgba(255,255,255,0.6);
-            color: #64748b;
-        }
-
-        .tab:hover {
-            background: rgba(59,130,246,0.08);
-            color: #ffffff;
-            border-color: rgba(59,130,246,0.2);
-        }
-
+        body.light .tab { border-color: rgba(100,116,139,0.15); background: rgba(255,255,255,0.6); color: #64748b; }
+        .tab:hover { background: rgba(59,130,246,0.08); color: #ffffff; border-color: rgba(59,130,246,0.2); }
         body.light .tab:hover { color: #1e293b; background: rgba(59,130,246,0.06); }
-
         .tab.active {
-            background: rgba(59,130,246,0.18);
-            color: #ffffff;
-            border-color: rgba(59,130,246,0.5);
+            background: rgba(59,130,246,0.18); color: #ffffff; border-color: rgba(59,130,246,0.5);
             box-shadow: 0 0 25px rgba(59,130,246,0.35), 0 0 50px rgba(59,130,246,0.15);
         }
+        body.light .tab.active { color: #1e293b; background: rgba(59,130,246,0.1); box-shadow: 0 0 15px rgba(59,130,246,0.2); }
 
-        body.light .tab.active {
-            color: #1e293b;
-            background: rgba(59,130,246,0.1);
-            box-shadow: 0 0 15px rgba(59,130,246,0.2);
+        /* ===================== OUR SPACE (SPECIAL TABS) ===================== */
+        .divider-text {
+            text-align: center; font-family: 'Qwigley', cursive; color: #a855f7;
+            font-size: 1.8em; margin: 15px 0; letter-spacing: 2px; transition: color 0.4s ease;
         }
+        body.light .divider-text { color: #c084fc; }
 
+        .special-tabs { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-bottom: 35px; }
+
+        .special-tab {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            padding: 12px 30px; border-radius: 16px; border: 1px solid rgba(168,85,247,0.3);
+            background: rgba(168,85,247,0.08); color: #e9d5ff; font-family: 'Poppins', sans-serif;
+            font-weight: 500; font-size: 0.9em; cursor: pointer; transition: all 0.3s ease;
+            position: relative; backdrop-filter: blur(10px);
+        }
+        body.light .special-tab { border-color: rgba(168,85,247,0.4); background: rgba(168,85,247,0.1); color: #6b21a8; }
+        .special-tab:hover {
+            background: rgba(168,85,247,0.15); color: #ffffff;
+            transform: translateY(-2px); box-shadow: 0 8px 25px rgba(168,85,247,0.25);
+        }
+        body.light .special-tab:hover { color: #4c1d95; background: rgba(168,85,247,0.15); }
+        .special-tab.active {
+            background: rgba(168,85,247,0.25); border-color: rgba(168,85,247,0.6); color: #ffffff;
+            box-shadow: 0 0 25px rgba(168,85,247,0.4), 0 0 50px rgba(168,85,247,0.2);
+        }
+        body.light .special-tab.active { background: rgba(168,85,247,0.2); color: #4c1d95; box-shadow: 0 0 15px rgba(168,85,247,0.3); }
+
+        .special-tab .emoji { font-size: 1.2em; }
+
+        /* ===================== BADGES ===================== */
         .badge {
-            position: absolute;
-            top: -7px;
-            right: -7px;
-            min-width: 18px;
-            height: 18px;
-            border-radius: 50px;
-            background: rgba(15,23,42,0.9);
-            border: 1.5px solid rgba(59,130,246,0.8);
+            position: absolute; top: -7px; right: -7px; min-width: 18px; height: 18px;
+            border-radius: 50px; background: rgba(15,23,42,0.9); border: 1.5px solid rgba(59,130,246,0.8);
             box-shadow: 0 0 10px rgba(59,130,246,0.9), 0 0 25px rgba(59,130,246,0.5);
-            color: #ffffff;
-            font-size: 0.6em;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 4px;
-            animation: badgePulse 2s infinite;
-            z-index: 10;
+            color: #ffffff; font-size: 0.6em; font-weight: 700; display: flex; align-items: center;
+            justify-content: center; padding: 0 4px; animation: badgePulse 2s infinite; z-index: 10;
         }
-
         body.light .badge { background: rgba(255,255,255,0.95); color: #3b82f6; }
+
+        /* Special badge color for notes & photos */
+        .special-tab .badge { border-color: rgba(168,85,247,0.8); box-shadow: 0 0 10px rgba(168,85,247,0.9), 0 0 25px rgba(168,85,247,0.5); animation: badgePulsePurple 2s infinite; }
+        body.light .special-tab .badge { color: #9333ea; border-color: rgba(168,85,247,0.6); }
 
         @keyframes badgePulse {
             0%, 100% { box-shadow: 0 0 10px rgba(59,130,246,0.9), 0 0 25px rgba(59,130,246,0.5); }
             50% { box-shadow: 0 0 18px rgba(59,130,246,1), 0 0 40px rgba(59,130,246,0.7); }
         }
+        @keyframes badgePulsePurple {
+            0%, 100% { box-shadow: 0 0 10px rgba(168,85,247,0.9), 0 0 25px rgba(168,85,247,0.5); }
+            50% { box-shadow: 0 0 18px rgba(168,85,247,1), 0 0 40px rgba(168,85,247,0.7); }
+        }
 
+        /* ===================== LIST SECTIONS ===================== */
         .category-section { display: none; }
         .category-section.active { display: block; animation: fadeIn 0.4s ease; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(12px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
         .section-header { text-align: center; margin-bottom: 24px; }
-
         .section-header h2 {
-            font-size: 1.1em;
-            color: #ffffff;
-            font-weight: 500;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-family: 'Poppins', sans-serif;
-            transition: color 0.4s ease;
+            font-size: 1.1em; color: #ffffff; font-weight: 500; letter-spacing: 2px;
+            text-transform: uppercase; font-family: 'Poppins', sans-serif; transition: color 0.4s ease;
         }
-
         body.light .section-header h2 { color: #334155; }
 
         .input-row { display: flex; gap: 10px; margin-bottom: 24px; }
-
         .input-row input {
-            flex: 1;
-            padding: 14px 20px;
-            border: 1px solid rgba(255,255,255,0.07);
-            border-radius: 16px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9em;
-            background: rgba(255,255,255,0.04);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            outline: none;
-            color: #ffffff;
+            flex: 1; padding: 14px 20px; border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 16px; font-family: 'Poppins', sans-serif; font-size: 0.9em;
+            background: rgba(255,255,255,0.04); backdrop-filter: blur(10px);
+            transition: all 0.3s ease; outline: none; color: #ffffff;
         }
-
-        body.light .input-row input {
-            border-color: rgba(100,116,139,0.15);
-            background: rgba(255,255,255,0.8);
-            color: #334155;
-        }
-
+        body.light .input-row input { border-color: rgba(100,116,139,0.15); background: rgba(255,255,255,0.8); color: #334155; }
         .input-row input::placeholder { color: #334155; }
         body.light .input-row input::placeholder { color: #94a3b8; }
-
-        .input-row input:focus {
-            border-color: rgba(59,130,246,0.4);
-            background: rgba(59,130,246,0.05);
-            box-shadow: 0 0 0 3px rgba(59,130,246,0.08);
-        }
-
+        .input-row input:focus { border-color: rgba(59,130,246,0.4); background: rgba(59,130,246,0.05); box-shadow: 0 0 0 3px rgba(59,130,246,0.08); }
         body.light .input-row input:focus { background: white; }
 
         .add-btn {
-            padding: 14px 22px;
-            background: rgba(59,130,246,0.15);
-            color: #ffffff;
-            border: 1px solid rgba(59,130,246,0.3);
-            border-radius: 16px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            backdrop-filter: blur(10px);
+            padding: 14px 22px; background: rgba(59,130,246,0.15); color: #ffffff;
+            border: 1px solid rgba(59,130,246,0.3); border-radius: 16px; font-family: 'Poppins', sans-serif;
+            font-size: 0.9em; font-weight: 600; cursor: pointer; transition: all 0.3s ease;
+            white-space: nowrap; backdrop-filter: blur(10px);
         }
-
         body.light .add-btn { background: rgba(59,130,246,0.1); color: #1e40af; border-color: rgba(59,130,246,0.25); }
-
-        .add-btn:hover {
-            background: rgba(59,130,246,0.3);
-            box-shadow: 0 0 30px rgba(59,130,246,0.45), 0 0 60px rgba(59,130,246,0.2);
-            transform: translateY(-1px);
-        }
-
+        .add-btn:hover { background: rgba(59,130,246,0.3); box-shadow: 0 0 30px rgba(59,130,246,0.45), 0 0 60px rgba(59,130,246,0.2); transform: translateY(-1px); }
         .add-btn:active { transform: scale(0.97); }
 
         .items-list { list-style: none; min-height: 50px; }
-
         .item {
-            background: rgba(255,255,255,0.03);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            padding: 15px 18px;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.06);
-            cursor: grab;
+            background: rgba(255,255,255,0.03); backdrop-filter: blur(10px); border-radius: 16px;
+            padding: 15px 18px; margin-bottom: 8px; display: flex; align-items: center; gap: 14px;
+            transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.06); cursor: grab;
         }
-
         body.light .item { background: rgba(255,255,255,0.75); border-color: rgba(255,255,255,0.9); }
-
-        .item:hover {
-            background: rgba(59,130,246,0.05);
-            border-color: rgba(59,130,246,0.15);
-            transform: translateX(4px);
-        }
-
+        .item:hover { background: rgba(59,130,246,0.05); border-color: rgba(59,130,246,0.15); transform: translateX(4px); }
         body.light .item:hover { background: rgba(255,255,255,0.95); box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
-
         .item.dragging { opacity: 0.4; transform: scale(0.98); cursor: grabbing; }
         .item.done { opacity: 0.35; }
         .item.done .item-text { text-decoration: line-through; color: #334155; }
 
         .check-btn {
-            width: 22px; height: 22px; border-radius: 50%;
-            border: 1px solid #334155; background: transparent;
-            cursor: pointer; transition: all 0.3s ease;
-            flex-shrink: 0; display: flex; align-items: center;
-            justify-content: center; font-size: 11px; z-index: 2; color: transparent;
+            width: 22px; height: 22px; border-radius: 50%; border: 1px solid #334155;
+            background: transparent; cursor: pointer; transition: all 0.3s ease; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center; font-size: 11px; z-index: 2; color: transparent;
         }
-
         body.light .check-btn { border-color: #cbd5e1; }
         .check-btn:hover { border-color: #3b82f6; background: rgba(59,130,246,0.1); }
-
-        .check-btn.checked {
-            background: rgba(59,130,246,0.25); border-color: #60a5fa;
-            color: #ffffff; box-shadow: 0 0 15px rgba(59,130,246,0.7), 0 0 30px rgba(59,130,246,0.3);
-        }
-
+        .check-btn.checked { background: rgba(59,130,246,0.25); border-color: #60a5fa; color: #ffffff; box-shadow: 0 0 15px rgba(59,130,246,0.7), 0 0 30px rgba(59,130,246,0.3); }
         body.light .check-btn.checked { color: #1e40af; box-shadow: 0 0 10px rgba(59,130,246,0.3); }
 
-        .item-text {
-            flex: 1; font-size: 0.9em; word-break: break-word;
-            cursor: text; user-select: text; color: #ffffff;
-            font-family: 'Poppins', sans-serif; transition: color 0.4s ease;
-        }
-
+        .item-text { flex: 1; font-size: 0.9em; word-break: break-word; cursor: text; user-select: text; color: #ffffff; font-family: 'Poppins', sans-serif; transition: color 0.4s ease; }
         body.light .item-text { color: #334155; }
-
-        .item-meta {
-            font-size: 0.7em; color: #475569; white-space: nowrap;
-            pointer-events: none; font-family: 'Poppins', sans-serif;
-        }
-
+        .item-meta { font-size: 0.7em; color: #475569; white-space: nowrap; pointer-events: none; font-family: 'Poppins', sans-serif; }
         body.light .item-meta { color: #94a3b8; }
 
-        .delete-btn {
-            background: none; border: none; color: #475569;
-            cursor: pointer; font-size: 1.1em; padding: 4px;
-            transition: all 0.3s ease; border-radius: 8px; z-index: 2;
-        }
-
+        .delete-btn { background: none; border: none; color: #475569; cursor: pointer; font-size: 1.1em; padding: 4px; transition: all 0.3s ease; border-radius: 8px; z-index: 2; }
         body.light .delete-btn { color: #cbd5e1; }
         .delete-btn:hover { color: #60a5fa; background: rgba(59,130,246,0.1); }
         body.light .delete-btn:hover { color: #ef4444; background: rgba(239,68,68,0.1); }
 
         .clear-all { text-align: center; margin-top: 15px; }
-
-        .clear-all button {
-            background: none; border: none; color: #334155;
-            font-size: 0.75em; cursor: pointer; text-decoration: underline;
-            font-family: 'Poppins', sans-serif; letter-spacing: 0.3px;
-        }
-
+        .clear-all button { background: none; border: none; color: #334155; font-size: 0.75em; cursor: pointer; text-decoration: underline; font-family: 'Poppins', sans-serif; letter-spacing: 0.3px; }
         body.light .clear-all button { color: #94a3b8; }
         .clear-all button:hover { color: #64748b; }
 
@@ -366,515 +222,117 @@
         body.light .empty-state p { color: #94a3b8; }
 
         /* ===================== THEME TOGGLE ===================== */
-        .theme-toggle {
-            display: flex; align-items: center; justify-content: center;
-            gap: 12px; margin-top: 40px; margin-bottom: 10px;
-        }
-
+        .theme-toggle { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 40px; margin-bottom: 10px; }
         .theme-toggle span { font-size: 0.75em; color: #334155; }
         body.light .theme-toggle span { color: #94a3b8; }
-
-        .toggle-switch {
-            width: 52px; height: 28px;
-            background: rgba(59,130,246,0.15);
-            border: 1px solid rgba(59,130,246,0.3);
-            border-radius: 50px; cursor: pointer;
-            position: relative; transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(59,130,246,0.25);
-        }
-
-        body.light .toggle-switch {
-            background: rgba(100,116,139,0.1);
-            border-color: rgba(100,116,139,0.2); box-shadow: none;
-        }
-
-        .toggle-switch::after {
-            content: ''; position: absolute; width: 20px; height: 20px;
-            border-radius: 50%; background: #3b82f6; top: 3px; left: 3px;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 10px rgba(59,130,246,0.8), 0 0 20px rgba(59,130,246,0.4);
-        }
-
+        .toggle-switch { width: 52px; height: 28px; background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.3); border-radius: 50px; cursor: pointer; position: relative; transition: all 0.3s ease; box-shadow: 0 0 15px rgba(59,130,246,0.25); }
+        body.light .toggle-switch { background: rgba(100,116,139,0.1); border-color: rgba(100,116,139,0.2); box-shadow: none; }
+        .toggle-switch::after { content: ''; position: absolute; width: 20px; height: 20px; border-radius: 50%; background: #3b82f6; top: 3px; left: 3px; transition: all 0.3s ease; box-shadow: 0 0 10px rgba(59,130,246,0.8), 0 0 20px rgba(59,130,246,0.4); }
         body.light .toggle-switch::after { left: 27px; background: #64748b; box-shadow: none; }
 
-        .footer {
-            text-align: center; padding: 10px 20px 20px;
-            color: #334155; font-size: 0.8em; letter-spacing: 1px;
-            font-family: 'Poppins', sans-serif;
-        }
-
+        .footer { text-align: center; padding: 10px 20px 20px; color: #334155; font-size: 0.8em; letter-spacing: 1px; font-family: 'Poppins', sans-serif; }
         body.light .footer { color: #94a3b8; }
 
-        .toast {
-            position: fixed; bottom: 30px; left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: rgba(15,23,42,0.95);
-            border: 1px solid rgba(59,130,246,0.3);
-            color: #ffffff; padding: 11px 24px; border-radius: 50px;
-            font-size: 0.85em; font-weight: 500;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
-            transition: transform 0.4s ease; z-index: 999;
-            pointer-events: none; font-family: 'Poppins', sans-serif;
-        }
-
-        body.light .toast {
-            background: rgba(255,255,255,0.95); color: #334155;
-            border-color: rgba(100,116,139,0.2); box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-        }
-
+        .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: rgba(15,23,42,0.95); border: 1px solid rgba(59,130,246,0.3); color: #ffffff; padding: 11px 24px; border-radius: 50px; font-size: 0.85em; font-weight: 500; box-shadow: 0 8px 30px rgba(0,0,0,0.4), 0 0 20px rgba(59,130,246,0.15); transition: transform 0.4s ease; z-index: 999; pointer-events: none; font-family: 'Poppins', sans-serif; }
+        body.light .toast { background: rgba(255,255,255,0.95); color: #334155; border-color: rgba(100,116,139,0.2); box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
         .toast.show { transform: translateX(-50%) translateY(0); }
 
         /* ===================== NOTES ===================== */
         .notes-section { display: none; min-height: 500px; }
         .notes-section.active { display: block; animation: fadeIn 0.4s ease; }
-
-        .notes-board {
-            position: relative; min-height: 520px; width: 100%;
-            background: rgba(255,255,255,0.015); border-radius: 24px;
-            border: 1px dashed rgba(255,255,255,0.06);
-            margin-top: 20px; overflow: hidden;
-        }
-
+        .notes-board { position: relative; min-height: 520px; width: 100%; background: rgba(255,255,255,0.015); border-radius: 24px; border: 1px dashed rgba(255,255,255,0.06); margin-top: 20px; overflow: hidden; transition: all 0.4s ease; }
         body.light .notes-board { background: rgba(255,255,255,0.4); border-color: rgba(100,116,139,0.15); }
-
-        .notes-board-hint {
-            position: absolute; top: 50%; left: 50%;
-            transform: translate(-50%, -50%); text-align: center;
-            color: #334155; pointer-events: none; font-size: 0.85em;
-        }
-
+        .notes-board-hint { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: #334155; pointer-events: none; font-size: 0.85em; font-family: 'Poppins', sans-serif; }
         body.light .notes-board-hint { color: #94a3b8; }
         .notes-board-hint .hint-emoji { font-size: 2em; display: block; margin-bottom: 8px; }
 
-        .add-note-btn {
-            display: flex; align-items: center; gap: 10px;
-            margin: 0 auto; padding: 13px 28px;
-            background: rgba(59,130,246,0.1); color: #ffffff;
-            border: 1px solid rgba(59,130,246,0.25);
-            border-radius: 50px; font-family: 'Poppins', sans-serif;
-            font-size: 0.9em; font-weight: 600; cursor: pointer;
-            transition: all 0.3s ease; backdrop-filter: blur(10px);
-        }
-
-        body.light .add-note-btn { color: #1e40af; background: rgba(59,130,246,0.08); }
-
-        .add-note-btn:hover {
-            background: rgba(59,130,246,0.2);
-            box-shadow: 0 0 30px rgba(59,130,246,0.4);
-            transform: translateY(-2px);
-        }
-
+        .add-note-btn { display: flex; align-items: center; gap: 10px; margin: 0 auto; padding: 13px 28px; background: rgba(168,85,247,0.15); color: #ffffff; border: 1px solid rgba(168,85,247,0.3); border-radius: 50px; font-family: 'Poppins', sans-serif; font-size: 0.9em; font-weight: 600; cursor: pointer; transition: all 0.3s ease; backdrop-filter: blur(10px); letter-spacing: 0.3px; }
+        body.light .add-note-btn { color: #6b21a8; background: rgba(168,85,247,0.1); border-color: rgba(168,85,247,0.25); }
+        .add-note-btn:hover { background: rgba(168,85,247,0.25); box-shadow: 0 0 30px rgba(168,85,247,0.4), 0 0 60px rgba(168,85,247,0.15); transform: translateY(-2px); }
         .add-note-btn .plus { font-size: 1.3em; font-weight: 300; line-height: 1; }
 
-        .sticker {
-            position: absolute; width: 185px; min-height: 165px;
-            border-radius: 4px; padding: 30px 15px 14px;
-            cursor: grab; transition: filter 0.2s ease;
-            z-index: 10; display: flex; flex-direction: column;
-        }
-
+        .sticker { position: absolute; width: 185px; min-height: 165px; border-radius: 4px; padding: 30px 15px 14px; cursor: grab; transition: filter 0.2s ease, box-shadow 0.2s ease; z-index: 10; display: flex; flex-direction: column; }
         .sticker:hover { z-index: 20; filter: brightness(1.05) saturate(1.1); }
-
-        .sticker.is-dragging {
-            cursor: grabbing; z-index: 100;
-            transform: rotate(2deg) scale(1.05) !important;
-            filter: brightness(1.08) saturate(1.15);
-        }
-
-        .sticker-delete {
-            position: absolute; top: 8px; right: 10px;
-            background: none; border: none; font-size: 1em;
-            cursor: pointer; color: rgba(0,0,0,0.3);
-            transition: color 0.2s ease; padding: 2px;
-        }
-
+        .sticker.is-dragging { cursor: grabbing; z-index: 100; transform: rotate(2deg) scale(1.05) !important; filter: brightness(1.08) saturate(1.15); }
+        .sticker-delete { position: absolute; top: 8px; right: 10px; background: none; border: none; font-size: 1em; cursor: pointer; color: rgba(0,0,0,0.3); transition: color 0.2s ease; line-height: 1; padding: 2px; }
         .sticker-delete:hover { color: rgba(0,0,0,0.65); }
+        .sticker-author { position: absolute; top: 10px; left: 13px; font-size: 0.65em; font-family: 'Caveat', cursive; color: rgba(0,0,0,0.45); font-weight: 700; letter-spacing: 0.3px; }
+        .sticker textarea { flex: 1; background: transparent; border: none; outline: none; font-family: 'Caveat', cursive; font-size: 1.2em; color: rgba(0,0,0,0.8); resize: none; width: 100%; min-height: 100px; line-height: 1.5; cursor: text; font-weight: 600; }
+        .sticker textarea::placeholder { color: rgba(0,0,0,0.2); }
 
-        .sticker-author {
-            position: absolute; top: 10px; left: 13px;
-            font-size: 0.65em; font-family: 'Caveat', cursive;
-            color: rgba(0,0,0,0.45); font-weight: 700;
-        }
-
-        .sticker textarea {
-            flex: 1; background: transparent; border: none; outline: none;
-            font-family: 'Caveat', cursive; font-size: 1.2em;
-            color: rgba(0,0,0,0.8); resize: none; width: 100%;
-            min-height: 100px; line-height: 1.5; cursor: text; font-weight: 600;
-        }
-
-        /* Note modal */
-        .note-modal-overlay {
-            display: none; position: fixed; inset: 0;
-            background: rgba(0,0,0,0.6); backdrop-filter: blur(8px);
-            z-index: 500; align-items: center; justify-content: center;
-        }
-
+        .note-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); z-index: 500; align-items: center; justify-content: center; }
         .note-modal-overlay.show { display: flex; animation: fadeIn 0.2s ease; }
-
-        .note-modal {
-            background: #0f172a; border: 1px solid rgba(59,130,246,0.2);
-            border-radius: 24px; padding: 30px; width: 90%; max-width: 400px;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.5);
-        }
-
-        body.light .note-modal {
-            background: #ffffff; border-color: rgba(100,116,139,0.15);
-            box-shadow: 0 25px 60px rgba(0,0,0,0.1);
-        }
-
-        .note-modal h3 {
-            font-size: 1em; color: #ffffff; margin-bottom: 16px;
-            text-align: center; letter-spacing: 1px; font-weight: 500;
-        }
-
+        .note-modal { background: #0f172a; border: 1px solid rgba(59,130,246,0.2); border-radius: 24px; padding: 30px; width: 90%; max-width: 400px; box-shadow: 0 25px 60px rgba(0,0,0,0.5), 0 0 40px rgba(59,130,246,0.1); }
+        body.light .note-modal { background: #ffffff; border-color: rgba(100,116,139,0.15); box-shadow: 0 25px 60px rgba(0,0,0,0.1); }
+        .note-modal h3 { font-size: 1em; color: #ffffff; margin-bottom: 16px; text-align: center; letter-spacing: 1px; font-weight: 500; font-family: 'Poppins', sans-serif; }
         body.light .note-modal h3 { color: #334155; }
-
-        .note-modal textarea {
-            width: 100%; height: 140px;
-            border: 1px solid rgba(255,255,255,0.07);
-            border-radius: 16px; padding: 16px;
-            font-family: 'Caveat', cursive; font-size: 1.3em;
-            color: #ffffff; background: rgba(255,255,255,0.03);
-            resize: none; outline: none; line-height: 1.5;
-        }
-
-        body.light .note-modal textarea {
-            border-color: rgba(100,116,139,0.15);
-            color: #334155; background: rgba(100,116,139,0.05);
-        }
-
-        .note-modal textarea:focus { border-color: rgba(59,130,246,0.4); box-shadow: 0 0 0 3px rgba(59,130,246,0.08); }
+        .note-modal textarea { width: 100%; height: 140px; border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; padding: 16px; font-family: 'Caveat', cursive; font-size: 1.3em; color: #ffffff; background: rgba(255,255,255,0.03); resize: none; outline: none; transition: all 0.3s ease; line-height: 1.5; }
+        body.light .note-modal textarea { border-color: rgba(100,116,139,0.15); color: #334155; background: rgba(100,116,139,0.05); }
+        .note-modal textarea:focus { border-color: rgba(168,85,247,0.4); box-shadow: 0 0 0 3px rgba(168,85,247,0.08); }
         .note-modal textarea::placeholder { color: #334155; }
         body.light .note-modal textarea::placeholder { color: #94a3b8; }
-
         .note-color-picker { display: flex; gap: 10px; justify-content: center; margin: 16px 0; }
-
-        .color-dot {
-            width: 26px; height: 26px; border-radius: 50%;
-            cursor: pointer; border: 2px solid transparent;
-            transition: all 0.2s ease;
-        }
-
+        .color-dot { width: 26px; height: 26px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: all 0.2s ease; }
         .color-dot:hover { transform: scale(1.15); }
         .color-dot.selected { border-color: rgba(255,255,255,0.5); transform: scale(1.15); }
         body.light .color-dot.selected { border-color: rgba(0,0,0,0.3); }
-
         .note-modal-btns { display: flex; gap: 10px; margin-top: 16px; }
-
-        .note-modal-btns button {
-            flex: 1; padding: 12px; border-radius: 14px; border: none;
-            font-family: 'Poppins', sans-serif; font-size: 0.85em;
-            font-weight: 600; cursor: pointer; transition: all 0.3s ease;
-        }
-
-        .btn-cancel {
-            background: rgba(255,255,255,0.04); color: #475569;
-            border: 1px solid rgba(255,255,255,0.06) !important;
-        }
-
+        .note-modal-btns button { flex: 1; padding: 12px; border-radius: 14px; border: none; font-family: 'Poppins', sans-serif; font-size: 0.85em; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
+        .btn-cancel { background: rgba(255,255,255,0.04); color: #475569; border: 1px solid rgba(255,255,255,0.06) !important; }
         body.light .btn-cancel { background: rgba(100,116,139,0.08); border-color: rgba(100,116,139,0.15) !important; }
         .btn-cancel:hover { background: rgba(255,255,255,0.07); color: #ffffff; }
-        body.light .btn-cancel:hover { color: #334155; }
-
-        .btn-post {
-            background: rgba(59,130,246,0.15); color: #ffffff;
-            border: 1px solid rgba(59,130,246,0.3) !important;
-        }
-
-        body.light .btn-post { color: #1e40af; }
-        .btn-post:hover { background: rgba(59,130,246,0.25); box-shadow: 0 0 25px rgba(59,130,246,0.4); }
+        body.light .btn-cancel:hover { color: #334155; background: rgba(100,116,139,0.15); }
+        .btn-post { background: rgba(168,85,247,0.15); color: #ffffff; border: 1px solid rgba(168,85,247,0.3) !important; }
+        body.light .btn-post { color: #6b21a8; background: rgba(168,85,247,0.1); }
+        .btn-post:hover { background: rgba(168,85,247,0.25); box-shadow: 0 0 25px rgba(168,85,247,0.4); }
 
         /* ===================== PHOTOS ===================== */
         .photos-section { display: none; }
         .photos-section.active { display: block; animation: fadeIn 0.4s ease; }
-
-        .photos-upload-area {
-            text-align: center;
-            margin-bottom: 24px;
-        }
-
-        .upload-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 13px 28px;
-            background: rgba(59,130,246,0.1);
-            color: #ffffff;
-            border: 1px solid rgba(59,130,246,0.25);
-            border-radius: 50px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        body.light .upload-btn { color: #1e40af; background: rgba(59,130,246,0.08); }
-
-        .upload-btn:hover {
-            background: rgba(59,130,246,0.2);
-            box-shadow: 0 0 30px rgba(59,130,246,0.4);
-            transform: translateY(-2px);
-        }
-
+        .photos-upload-area { text-align: center; margin-bottom: 24px; }
+        .upload-btn { display: inline-flex; align-items: center; gap: 10px; padding: 13px 28px; background: rgba(168,85,247,0.15); color: #ffffff; border: 1px solid rgba(168,85,247,0.3); border-radius: 50px; font-family: 'Poppins', sans-serif; font-size: 0.9em; font-weight: 600; cursor: pointer; transition: all 0.3s ease; backdrop-filter: blur(10px); }
+        body.light .upload-btn { color: #6b21a8; background: rgba(168,85,247,0.1); border-color: rgba(168,85,247,0.25); }
+        .upload-btn:hover { background: rgba(168,85,247,0.25); box-shadow: 0 0 30px rgba(168,85,247,0.4); transform: translateY(-2px); }
         .upload-btn .plus { font-size: 1.3em; font-weight: 300; }
-
         #photoFileInput { display: none; }
-
-        .upload-progress {
-            display: none;
-            margin: 16px auto;
-            text-align: center;
-        }
-
-        .progress-bar-bg {
-            width: 200px;
-            height: 4px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 10px;
-            margin: 8px auto;
-            overflow: hidden;
-        }
-
+        .upload-progress { display: none; margin: 16px auto; text-align: center; }
+        .progress-bar-bg { width: 200px; height: 4px; background: rgba(255,255,255,0.1); border-radius: 10px; margin: 8px auto; overflow: hidden; }
         body.light .progress-bar-bg { background: rgba(100,116,139,0.15); }
-
-        .progress-bar-fill {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, #3b82f6, #60a5fa);
-            border-radius: 10px;
-            transition: width 0.3s ease;
-        }
-
-        .progress-text {
-            font-size: 0.75em;
-            color: #475569;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        /* Photo Grid */
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-        }
-
-        @media (max-width: 500px) {
-            .photo-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        .photo-card {
-            position: relative;
-            border-radius: 16px;
-            overflow: hidden;
-            aspect-ratio: 1;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.06);
-        }
-
+        .progress-bar-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #c084fc, #818cf8); border-radius: 10px; transition: width 0.3s ease; }
+        .progress-text { font-size: 0.75em; color: #475569; font-family: 'Poppins', sans-serif; }
+        
+        .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        @media (max-width: 500px) { .photo-grid { grid-template-columns: repeat(2, 1fr); } .special-tabs { flex-direction: column; padding: 0 20px; } .special-tab { width: 100%; } }
+        
+        .photo-card { position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 1; cursor: pointer; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.06); }
         body.light .photo-card { border-color: rgba(100,116,139,0.1); }
-
-        .photo-card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 8px 30px rgba(59,130,246,0.3), 0 0 20px rgba(59,130,246,0.15);
-        }
-
-        body.light .photo-card:hover {
-            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-        }
-
-        .photo-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .photo-card .photo-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(transparent 60%, rgba(0,0,0,0.6));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            display: flex;
-            align-items: flex-end;
-            padding: 12px;
-        }
-
+        .photo-card:hover { transform: scale(1.03); box-shadow: 0 8px 30px rgba(168,85,247,0.3), 0 0 20px rgba(168,85,247,0.15); z-index: 2; }
+        body.light .photo-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
+        .photo-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .photo-card .photo-overlay { position: absolute; inset: 0; background: linear-gradient(transparent 60%, rgba(0,0,0,0.6)); opacity: 0; transition: opacity 0.3s ease; display: flex; align-items: flex-end; padding: 12px; }
         .photo-card:hover .photo-overlay { opacity: 1; }
-
-        .photo-overlay-date {
-            color: rgba(255,255,255,0.9);
-            font-size: 0.72em;
-            font-family: 'Poppins', sans-serif;
-            letter-spacing: 0.5px;
-        }
-
-        .photo-delete-btn {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(4px);
-            border: none;
-            color: rgba(255,255,255,0.8);
-            font-size: 0.9em;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: all 0.2s ease;
-            z-index: 5;
-        }
-
+        .photo-overlay-date { color: rgba(255,255,255,0.9); font-size: 0.72em; font-family: 'Poppins', sans-serif; letter-spacing: 0.5px; }
+        .photo-delete-btn { position: absolute; top: 8px; right: 8px; width: 28px; height: 28px; border-radius: 50%; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); border: none; color: rgba(255,255,255,0.8); font-size: 0.9em; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; transition: all 0.2s ease; z-index: 5; }
         .photo-card:hover .photo-delete-btn { opacity: 1; }
         .photo-delete-btn:hover { background: rgba(239,68,68,0.7); color: white; }
 
-        .photo-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 8px 12px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.5));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .photo-card:hover .photo-caption { opacity: 1; }
-
-        .photo-caption input {
-            width: 100%;
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid rgba(255,255,255,0.3);
-            color: white;
-            font-family: 'Caveat', cursive;
-            font-size: 1em;
-            outline: none;
-            padding: 4px 0;
-        }
-
-        .photo-caption input::placeholder { color: rgba(255,255,255,0.5); }
-
-        /* Photo Lightbox */
-        .lightbox {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.92);
-            backdrop-filter: blur(10px);
-            z-index: 600;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-
-        .lightbox.show {
-            display: flex;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .lightbox img {
-            max-width: 90vw;
-            max-height: 85vh;
-            border-radius: 12px;
-            object-fit: contain;
-            cursor: default;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 24px;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.15);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 1.2em;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease;
-        }
-
-        .lightbox-close:hover {
-            background: rgba(255,255,255,0.2);
-        }
-
-        .lightbox-caption {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: rgba(255,255,255,0.7);
-            font-family: 'Caveat', cursive;
-            font-size: 1.3em;
-            text-align: center;
-        }
-
-        .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255,255,255,0.08);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: white;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            font-size: 1.2em;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease;
-        }
-
+        .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); backdrop-filter: blur(10px); z-index: 600; align-items: center; justify-content: center; cursor: pointer; }
+        .lightbox.show { display: flex; animation: fadeIn 0.3s ease; }
+        .lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 12px; object-fit: contain; cursor: default; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+        .lightbox-close { position: absolute; top: 20px; right: 24px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); color: white; width: 40px; height: 40px; border-radius: 50%; font-size: 1.2em; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; }
+        .lightbox-close:hover { background: rgba(255,255,255,0.2); }
+        .lightbox-caption { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.7); font-family: 'Caveat', cursive; font-size: 1.3em; text-align: center; }
+        .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.08); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); color: white; width: 44px; height: 44px; border-radius: 50%; font-size: 1.2em; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; }
         .lightbox-nav:hover { background: rgba(255,255,255,0.18); }
         .lightbox-prev { left: 16px; }
         .lightbox-next { right: 16px; }
 
-        .photos-empty {
-            text-align: center;
-            padding: 60px 20px;
-        }
-
+        .photos-empty { text-align: center; padding: 60px 20px; }
         .photos-empty .empty-emoji { font-size: 3em; display: block; margin-bottom: 12px; }
         .photos-empty p { color: #334155; font-size: 0.85em; }
         body.light .photos-empty p { color: #94a3b8; }
-
-        .photo-count {
-            text-align: center;
-            margin-top: 16px;
-            font-size: 0.72em;
-            color: #334155;
-            letter-spacing: 0.5px;
-        }
-
+        .photo-count { text-align: center; margin-top: 16px; font-size: 0.72em; color: #334155; letter-spacing: 0.5px; }
         body.light .photo-count { color: #94a3b8; }
-
-        @media (max-width: 500px) {
-            .header h1 { font-size: 2em; }
-            .tabs { gap: 8px; }
-            .tab { padding: 8px 13px; font-size: 0.75em; }
-            .input-row { flex-direction: column; }
-            body { padding: 12px; }
-            .item { padding: 12px 14px; }
-        }
     </style>
 </head>
 <body>
@@ -888,7 +346,16 @@
             </div>
         </div>
 
-        <div class="tabs" id="tabs"></div>
+        <!-- MAIN TABS -->
+        <div class="tabs" id="mainTabs"></div>
+
+        <!-- DIVIDER -->
+        <div class="divider-text">✦ our space ✦</div>
+
+        <!-- SPECIAL TABS -->
+        <div class="special-tabs" id="specialTabs"></div>
+
+        <!-- CONTENT SECTIONS -->
         <div id="sections"></div>
 
         <div class="theme-toggle">
@@ -1009,6 +476,8 @@
         }
 
         let localData = {};
+        let allStickers = {};
+        let allPhotos = {};
 
         function showToast(msg) {
             const t = document.getElementById('toast');
@@ -1025,52 +494,74 @@
 
         function getLocalSeen() { const s = localStorage.getItem('ours-seen'); return s ? JSON.parse(s) : {}; }
         function saveLocalSeen(seen) { localStorage.setItem('ours-seen', JSON.stringify(seen)); }
-        function getNewCount(catId) { const items = localData[catId] || []; const seen = getLocalSeen(); return Math.max(0, items.length - (seen[catId] || 0)); }
+
+        function getNewCount(catId) {
+            const seen = getLocalSeen();
+            if (catId === 'photos') return Math.max(0, Object.keys(allPhotos).length - (seen[catId] || 0));
+            if (catId === 'notes') return Math.max(0, Object.keys(allStickers).length - (seen[catId] || 0));
+            
+            const items = localData[catId] || [];
+            return Math.max(0, items.length - (seen[catId] || 0));
+        }
 
         function markAsSeen(catId) {
-            const items = localData[catId] || [];
             const seen = getLocalSeen();
-            seen[catId] = items.length;
+            if (catId === 'photos') seen[catId] = Object.keys(allPhotos).length;
+            else if (catId === 'notes') seen[catId] = Object.keys(allStickers).length;
+            else seen[catId] = (localData[catId] || []).length;
+            
             saveLocalSeen(seen);
             updateTabBadge(catId);
         }
 
+        // Data Listeners
         dataRef.on('value', (snapshot) => {
             localData = snapshot.val() || {};
             renderAll();
             updateAllTabBadges();
         });
 
+        notesRef.on('value', (snap) => {
+            updateTabBadge('notes');
+        });
+
+        photosRef.on('value', (snap) => {
+            allPhotos = snap.val() || {};
+            renderPhotos();
+            updateTabBadge('photos');
+        });
+
         function saveToFirebase() { dataRef.set(localData); }
 
         // ===================== BUILD UI =====================
         function buildTabs() {
-            const tabsEl = document.getElementById('tabs');
+            const mainTabsEl = document.getElementById('mainTabs');
+            const specialTabsEl = document.getElementById('specialTabs');
 
+            // 1. Regular Categories
             categories.forEach((cat, i) => {
                 const btn = document.createElement('button');
                 btn.className = 'tab' + (i === 0 ? ' active' : '');
                 btn.dataset.cat = cat.id;
                 btn.innerHTML = cat.name;
                 btn.addEventListener('click', () => switchTab(cat.id));
-                tabsEl.appendChild(btn);
+                mainTabsEl.appendChild(btn);
             });
 
-            // Photos tab
+            // 2. Special Categories (Our Space)
             const photosBtn = document.createElement('button');
-            photosBtn.className = 'tab';
+            photosBtn.className = 'special-tab';
             photosBtn.dataset.cat = 'photos';
-            photosBtn.innerHTML = 'photos ✦';
+            photosBtn.innerHTML = '<span class="emoji">📸</span> photos';
             photosBtn.addEventListener('click', () => switchTab('photos'));
-            tabsEl.appendChild(photosBtn);
+            specialTabsEl.appendChild(photosBtn);
 
-            // Notes tab
             const notesBtn = document.createElement('button');
-            notesBtn.className = 'tab';
+            notesBtn.className = 'special-tab';
             notesBtn.dataset.cat = 'notes';
-            notesBtn.innerHTML = 'notes ✦';
+            notesBtn.innerHTML = '<span class="emoji">💌</span> notes';
             notesBtn.addEventListener('click', () => switchTab('notes'));
-            tabsEl.appendChild(notesBtn);
+            specialTabsEl.appendChild(notesBtn);
         }
 
         function buildSections() {
@@ -1103,9 +594,7 @@
                         <span class="plus">+</span> add photo
                     </button>
                     <div class="upload-progress" id="uploadProgress">
-                        <div class="progress-bar-bg">
-                            <div class="progress-bar-fill" id="progressBarFill"></div>
-                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressBarFill"></div></div>
                         <div class="progress-text" id="progressText">uploading...</div>
                     </div>
                 </div>
@@ -1146,25 +635,35 @@
         }
 
         function switchTab(catId) {
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            document.querySelector(`.tab[data-cat="${catId}"]`).classList.add('active');
+            document.querySelectorAll('.tab, .special-tab').forEach(t => t.classList.remove('active'));
+            document.querySelector(`[data-cat="${catId}"]`).classList.add('active');
+            
             document.querySelectorAll('.category-section, .notes-section, .photos-section').forEach(s => s.classList.remove('active'));
             document.getElementById('section-' + catId).classList.add('active');
+            
+            markAsSeen(catId);
+
             if (catId !== 'notes' && catId !== 'photos') {
-                markAsSeen(catId);
                 setTimeout(() => document.getElementById('input-' + catId).focus(), 100);
             }
         }
 
         function updateTabBadge(catId) {
-            const tab = document.querySelector(`.tab[data-cat="${catId}"]`);
+            const tab = document.querySelector(`[data-cat="${catId}"]`);
             if (!tab) return;
-            const cat = categories.find(c => c.id === catId);
-            if (!cat) return;
+            
             const newCount = getNewCount(catId);
             const existingBadge = tab.querySelector('.badge');
             if (existingBadge) existingBadge.remove();
-            tab.innerHTML = cat.name;
+            
+            // Restore proper text based on type
+            if (catId === 'photos') tab.innerHTML = '<span class="emoji">📸</span> photos';
+            else if (catId === 'notes') tab.innerHTML = '<span class="emoji">💌</span> notes';
+            else {
+                const cat = categories.find(c => c.id === catId);
+                if (cat) tab.innerHTML = cat.name;
+            }
+
             if (newCount > 0) {
                 const badge = document.createElement('span');
                 badge.className = 'badge';
@@ -1173,7 +672,11 @@
             }
         }
 
-        function updateAllTabBadges() { categories.forEach(cat => updateTabBadge(cat.id)); }
+        function updateAllTabBadges() { 
+            categories.forEach(cat => updateTabBadge(cat.id)); 
+            updateTabBadge('photos');
+            updateTabBadge('notes');
+        }
 
         function addItem(catId) {
             const input = document.getElementById('input-' + catId);
@@ -1181,10 +684,11 @@
             if (!text) return;
             if (!localData[catId]) localData[catId] = [];
             localData[catId].unshift({ text, done: false, date: getDate() });
-            const seen = getLocalSeen();
-            seen[catId] = localData[catId].length;
-            saveLocalSeen(seen);
+            
             saveToFirebase();
+            // Mark as seen immediately so sender doesn't see a badge
+            setTimeout(() => markAsSeen(catId), 100);
+            
             input.value = '';
             showToast('added ♡');
         }
@@ -1193,19 +697,16 @@
 
         function deleteItem(catId, index) {
             localData[catId].splice(index, 1);
-            const seen = getLocalSeen();
-            if (seen[catId] > localData[catId].length) { seen[catId] = localData[catId].length; saveLocalSeen(seen); }
             saveToFirebase();
+            setTimeout(() => markAsSeen(catId), 100);
             showToast('removed');
         }
 
         function clearAll(catId) {
             if (!confirm('Clear all items in this category?')) return;
             localData[catId] = [];
-            const seen = getLocalSeen();
-            seen[catId] = 0;
-            saveLocalSeen(seen);
             saveToFirebase();
+            setTimeout(() => markAsSeen(catId), 100);
         }
 
         function renderList(catId) {
@@ -1260,48 +761,25 @@
         function renderAll() { categories.forEach(cat => renderList(cat.id)); }
 
         let draggedItem = null, draggedCatId = null, draggedIndex = null;
-
-        function handleDragStart(e) {
-            draggedItem = this; draggedCatId = this.dataset.cat;
-            draggedIndex = parseInt(this.dataset.index);
-            this.classList.add('dragging'); e.dataTransfer.effectAllowed = 'move';
-        }
-
+        function handleDragStart(e) { draggedItem = this; draggedCatId = this.dataset.cat; draggedIndex = parseInt(this.dataset.index); this.classList.add('dragging'); e.dataTransfer.effectAllowed = 'move'; }
         function handleDragEnd() { this.classList.remove('dragging'); draggedItem = null; }
-
         function handleDragOver(e) {
-            e.preventDefault();
-            const target = e.target.closest('.item');
+            e.preventDefault(); const target = e.target.closest('.item');
             if (target && target !== draggedItem && target.dataset.cat === draggedCatId) {
-                const list = target.parentNode;
-                const children = Array.from(list.children);
-                if (draggedIndex < children.indexOf(target)) list.insertBefore(draggedItem, target.nextSibling);
-                else list.insertBefore(draggedItem, target);
+                const list = target.parentNode; const children = Array.from(list.children);
+                if (draggedIndex < children.indexOf(target)) list.insertBefore(draggedItem, target.nextSibling); else list.insertBefore(draggedItem, target);
             }
         }
-
         function handleDrop(e) {
-            e.preventDefault();
-            const target = e.target.closest('.item');
+            e.preventDefault(); const target = e.target.closest('.item');
             if (!target || target === draggedItem || target.dataset.cat !== draggedCatId) return;
-            const items = localData[draggedCatId];
-            const [movedItem] = items.splice(draggedIndex, 1);
-            const children = Array.from(target.parentNode.children);
-            let newIndex = children.indexOf(draggedItem);
-            if (draggedIndex < newIndex) newIndex--;
-            items.splice(newIndex, 0, movedItem);
-            saveToFirebase();
+            const items = localData[draggedCatId]; const [movedItem] = items.splice(draggedIndex, 1);
+            const children = Array.from(target.parentNode.children); let newIndex = children.indexOf(draggedItem);
+            if (draggedIndex < newIndex) newIndex--; items.splice(newIndex, 0, movedItem); saveToFirebase();
         }
 
         // ===================== STICKER NOTES =====================
-        let allStickers = {};
-
-        function openNoteModal() {
-            document.getElementById('noteModalOverlay').classList.add('show');
-            document.getElementById('noteTextarea').value = '';
-            setTimeout(() => document.getElementById('noteTextarea').focus(), 100);
-        }
-
+        function openNoteModal() { document.getElementById('noteModalOverlay').classList.add('show'); document.getElementById('noteTextarea').value = ''; setTimeout(() => document.getElementById('noteTextarea').focus(), 100); }
         function closeNoteModal() { document.getElementById('noteModalOverlay').classList.remove('show'); }
 
         function postNote() {
@@ -1313,6 +791,7 @@
             const rotate = (Math.random() * 8 - 4).toFixed(1);
             notesRef.push({ text, color: selectedColor, x, y, rotate, date: getDate(), ts: Date.now() });
             closeNoteModal();
+            setTimeout(() => markAsSeen('notes'), 100);
             showToast('note posted ♡');
         }
 
@@ -1323,24 +802,31 @@
 
             const color = noteColors[note.color] || noteColors[0];
             const isLight = document.body.classList.contains('light');
+
             const el = document.createElement('div');
             el.className = 'sticker';
             el.id = 'sticker-' + id;
-            el.style.cssText = `left:${note.x}px;top:${note.y}px;background:${color.bg};box-shadow:4px 6px 25px ${color.shadow}, 0 0 ${isLight ? '15px' : '30px'} ${color.glow};transform:rotate(${note.rotate}deg);border:1px solid rgba(255,255,255,${isLight ? '0.7' : '0.2'});`;
+            el.style.cssText = `
+                left: ${note.x}px; top: ${note.y}px;
+                background: ${color.bg};
+                box-shadow: 4px 6px 25px ${color.shadow}, 0 0 ${isLight ? '15px' : '30px'} ${color.glow};
+                transform: rotate(${note.rotate}deg);
+                border: 1px solid rgba(255,255,255,${isLight ? '0.7' : '0.2'});
+            `;
+
             el.innerHTML = `
                 <button class="sticker-delete" onclick="deleteSticker('${id}')">✕</button>
                 <span class="sticker-author">${note.date}</span>
                 <textarea readonly>${note.text}</textarea>
             `;
+
             makeStickerDraggable(el, id);
             board.appendChild(el);
             const hint = document.getElementById('notesBoardHint');
             if (hint) hint.style.display = 'none';
         }
 
-        function rerenderAllStickers() {
-            Object.keys(allStickers).forEach(id => renderSticker(id, allStickers[id]));
-        }
+        function rerenderAllStickers() { Object.keys(allStickers).forEach(id => renderSticker(id, allStickers[id])); }
 
         function makeStickerDraggable(el, id) {
             let startX, startY, startLeft, startTop, isDragging = false;
@@ -1357,30 +843,27 @@
                 el.classList.add('is-dragging');
             }, { passive: true });
             document.addEventListener('mousemove', (e) => {
-                if (!isDragging) return;
-                const board = document.getElementById('notesBoard');
+                if (!isDragging) return; const board = document.getElementById('notesBoard');
                 el.style.left = Math.max(0, Math.min(board.offsetWidth - 190, startLeft + e.clientX - startX)) + 'px';
                 el.style.top = Math.max(0, Math.min(board.offsetHeight - 170, startTop + e.clientY - startY)) + 'px';
             });
             document.addEventListener('touchmove', (e) => {
-                if (!isDragging) return;
-                const board = document.getElementById('notesBoard');
+                if (!isDragging) return; const board = document.getElementById('notesBoard');
                 el.style.left = Math.max(0, Math.min(board.offsetWidth - 190, startLeft + e.touches[0].clientX - startX)) + 'px';
                 el.style.top = Math.max(0, Math.min(board.offsetHeight - 170, startTop + e.touches[0].clientY - startY)) + 'px';
             }, { passive: true });
             const stopDrag = () => {
-                if (!isDragging) return;
-                isDragging = false; el.classList.remove('is-dragging');
+                if (!isDragging) return; isDragging = false; el.classList.remove('is-dragging');
                 notesRef.child(id).update({ x: parseInt(el.style.left), y: parseInt(el.style.top) });
             };
-            document.addEventListener('mouseup', stopDrag);
-            document.addEventListener('touchend', stopDrag);
+            document.addEventListener('mouseup', stopDrag); document.addEventListener('touchend', stopDrag);
         }
 
         function deleteSticker(id) {
             notesRef.child(id).remove();
             const el = document.getElementById('sticker-' + id);
             if (el) el.remove();
+            setTimeout(() => markAsSeen('notes'), 100);
             showToast('note removed');
             const board = document.getElementById('notesBoard');
             if (board && board.querySelectorAll('.sticker').length === 0) {
@@ -1392,13 +875,9 @@
         notesRef.on('child_added', (snap) => { allStickers[snap.key] = snap.val(); renderSticker(snap.key, snap.val()); });
         notesRef.on('child_removed', (snap) => { delete allStickers[snap.key]; const el = document.getElementById('sticker-' + snap.key); if (el) el.remove(); });
 
-        document.getElementById('noteModalOverlay').addEventListener('click', (e) => {
-            if (e.target === document.getElementById('noteModalOverlay')) closeNoteModal();
-        });
+        document.getElementById('noteModalOverlay').addEventListener('click', (e) => { if (e.target === document.getElementById('noteModalOverlay')) closeNoteModal(); });
 
         // ===================== PHOTOS =====================
-        let allPhotos = {};
-
         document.getElementById('photoFileInput').addEventListener('change', async (e) => {
             const files = Array.from(e.target.files);
             if (files.length === 0) return;
@@ -1414,25 +893,17 @@
 
                 try {
                     const url = await uploadToCloudinary(files[i]);
-                    photosRef.push({
-                        url: url,
-                        caption: '',
-                        date: getDate(),
-                        ts: Date.now()
-                    });
+                    photosRef.push({ url: url, caption: '', date: getDate(), ts: Date.now() });
                 } catch (err) {
                     console.error('Upload failed:', err);
                     showToast('upload failed :(');
                 }
             }
 
-            bar.style.width = '100%';
-            text.textContent = 'done ♡';
-            setTimeout(() => {
-                progress.style.display = 'none';
-                bar.style.width = '0%';
-            }, 1500);
+            bar.style.width = '100%'; text.textContent = 'done ♡';
+            setTimeout(() => { progress.style.display = 'none'; bar.style.width = '0%'; }, 1500);
 
+            setTimeout(() => markAsSeen('photos'), 100);
             showToast(`${files.length} photo${files.length > 1 ? 's' : ''} added ♡`);
             e.target.value = '';
         });
@@ -1443,19 +914,12 @@
                 formData.append('file', file);
                 formData.append('upload_preset', UPLOAD_PRESET);
                 formData.append('folder', 'ours-photos');
-
                 const xhr = new XMLHttpRequest();
                 xhr.open('POST', `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`);
-
                 xhr.onload = () => {
-                    if (xhr.status === 200) {
-                        const res = JSON.parse(xhr.responseText);
-                        resolve(res.secure_url);
-                    } else {
-                        reject(new Error('Upload failed'));
-                    }
+                    if (xhr.status === 200) { const res = JSON.parse(xhr.responseText); resolve(res.secure_url); }
+                    else { reject(new Error('Upload failed')); }
                 };
-
                 xhr.onerror = () => reject(new Error('Upload error'));
                 xhr.send(formData);
             });
@@ -1468,16 +932,10 @@
             const keys = Object.keys(allPhotos);
 
             if (keys.length === 0) {
-                grid.style.display = 'none';
-                empty.style.display = 'block';
-                count.textContent = '';
-                return;
+                grid.style.display = 'none'; empty.style.display = 'block'; count.textContent = ''; return;
             }
 
-            empty.style.display = 'none';
-            grid.style.display = 'grid';
-
-            // Sort by timestamp newest first
+            empty.style.display = 'none'; grid.style.display = 'grid';
             const sorted = keys.sort((a, b) => (allPhotos[b].ts || 0) - (allPhotos[a].ts || 0));
 
             grid.innerHTML = '';
@@ -1488,65 +946,43 @@
                 card.innerHTML = `
                     <img src="${photo.url}" alt="" loading="lazy">
                     <button class="photo-delete-btn" onclick="event.stopPropagation(); deletePhoto('${id}')">✕</button>
-                    <div class="photo-overlay">
-                        <span class="photo-overlay-date">${photo.date || ''}</span>
-                    </div>
+                    <div class="photo-overlay"><span class="photo-overlay-date">${photo.date || ''}</span></div>
                 `;
                 card.addEventListener('click', () => openLightbox(index));
                 grid.appendChild(card);
             });
-
             count.textContent = `${keys.length} memory${keys.length !== 1 ? 's' : ''} saved ♡`;
         }
 
         function deletePhoto(id) {
             if (!confirm('Delete this photo?')) return;
             photosRef.child(id).remove();
+            setTimeout(() => markAsSeen('photos'), 100);
             showToast('photo removed');
         }
 
         // Lightbox
-        let lightboxPhotos = [];
-        let lightboxIndex = 0;
-
+        let lightboxPhotos = []; let lightboxIndex = 0;
         function openLightbox(index) {
             const keys = Object.keys(allPhotos).sort((a, b) => (allPhotos[b].ts || 0) - (allPhotos[a].ts || 0));
             lightboxPhotos = keys.map(k => allPhotos[k]);
-            lightboxIndex = index;
-            updateLightbox();
+            lightboxIndex = index; updateLightbox();
             document.getElementById('lightbox').classList.add('show');
         }
-
-        function closeLightbox() {
-            document.getElementById('lightbox').classList.remove('show');
-        }
-
-        function navigateLightbox(dir) {
-            lightboxIndex = (lightboxIndex + dir + lightboxPhotos.length) % lightboxPhotos.length;
-            updateLightbox();
-        }
-
+        function closeLightbox() { document.getElementById('lightbox').classList.remove('show'); }
+        function navigateLightbox(dir) { lightboxIndex = (lightboxIndex + dir + lightboxPhotos.length) % lightboxPhotos.length; updateLightbox(); }
         function updateLightbox() {
             const photo = lightboxPhotos[lightboxIndex];
             document.getElementById('lightboxImg').src = photo.url;
             document.getElementById('lightboxCaption').textContent = photo.caption || photo.date || '';
         }
 
-        document.getElementById('lightbox').addEventListener('click', (e) => {
-            if (e.target === document.getElementById('lightbox')) closeLightbox();
-        });
-
+        document.getElementById('lightbox').addEventListener('click', (e) => { if (e.target === document.getElementById('lightbox')) closeLightbox(); });
         document.addEventListener('keydown', (e) => {
             if (!document.getElementById('lightbox').classList.contains('show')) return;
             if (e.key === 'Escape') closeLightbox();
             if (e.key === 'ArrowLeft') navigateLightbox(-1);
             if (e.key === 'ArrowRight') navigateLightbox(1);
-        });
-
-        // Firebase listeners for photos
-        photosRef.on('value', (snap) => {
-            allPhotos = snap.val() || {};
-            renderPhotos();
         });
 
         window.addEventListener('load', () => markAsSeen(categories[0].id));

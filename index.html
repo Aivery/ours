@@ -684,7 +684,7 @@
                 card.innerHTML = `<img src="${photo.url}" alt="" loading="lazy"><button class="photo-delete-btn" onclick="event.stopPropagation(); deletePhoto('${id}')">✕</button><div class="photo-overlay"><span class="photo-overlay-date">${photo.date || ''}</span></div>`;
                 card.addEventListener('click', () => openLightbox(index)); grid.appendChild(card);
             });
-            count.textContent = `${keys.length} memory${keys.length !== 1 ? 's' : ''} saved ♡`;
+            count.textContent = `${keys.length} ${keys.length !== 1 ? 'memories' : 'memory'} saved ♡`;
         }
 
         function deletePhoto(id) { if (!confirm('Delete this photo?')) return; photosRef.child(id).remove(); setTimeout(() => markAsSeen('photos'), 100); showToast('photo removed'); }

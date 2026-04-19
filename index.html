@@ -9,7 +9,6 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* ===================== THEME ===================== */
         body {
             font-family: 'Poppins', sans-serif;
             background: #0a0a0f;
@@ -43,7 +42,6 @@
 
         .container { max-width: 700px; margin: 0 auto; position: relative; z-index: 1; }
 
-        /* ===================== HEADER ===================== */
         .header { text-align: center; padding: 40px 0 10px; }
         .header h1 {
             font-size: 2.5em; font-weight: 700; color: #fff;
@@ -90,35 +88,35 @@
         }
         body.light .tab.active { color: #1e293b; background: rgba(59,130,246,0.1); box-shadow: 0 0 15px rgba(59,130,246,0.2); }
 
-        /* ===================== OUR SPACE (SPECIAL TABS) ===================== */
+        /* ===================== DIVIDER ===================== */
         .divider-text {
-            text-align: center; font-family: 'Qwigley', cursive; color: #a855f7;
-            font-size: 1.8em; margin: 15px 0; letter-spacing: 2px; transition: color 0.4s ease;
+            text-align: center; font-family: 'Qwigley', cursive; color: #c084fc;
+            font-size: 1.4em; margin: 18px 0 12px; letter-spacing: 2px; transition: color 0.4s ease;
         }
-        body.light .divider-text { color: #c084fc; }
+        body.light .divider-text { color: #a855f7; }
 
-        .special-tabs { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-bottom: 35px; }
+        /* ===================== SPECIAL TABS ===================== */
+        .special-tabs { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 30px; }
 
         .special-tab {
-            display: flex; align-items: center; justify-content: center; gap: 8px;
-            padding: 12px 30px; border-radius: 16px; border: 1px solid rgba(168,85,247,0.3);
-            background: rgba(168,85,247,0.08); color: #e9d5ff; font-family: 'Poppins', sans-serif;
-            font-weight: 500; font-size: 0.9em; cursor: pointer; transition: all 0.3s ease;
-            position: relative; backdrop-filter: blur(10px);
+            padding: 9px 18px; border-radius: 50px;
+            border: 1px solid rgba(168,85,247,0.25);
+            background: rgba(168,85,247,0.06); color: #e9d5ff;
+            font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 0.8em;
+            cursor: pointer; transition: all 0.3s ease;
+            position: relative; backdrop-filter: blur(10px); letter-spacing: 0.3px;
         }
-        body.light .special-tab { border-color: rgba(168,85,247,0.4); background: rgba(168,85,247,0.1); color: #6b21a8; }
+        body.light .special-tab { border-color: rgba(168,85,247,0.25); background: rgba(168,85,247,0.06); color: #7c3aed; }
         .special-tab:hover {
-            background: rgba(168,85,247,0.15); color: #ffffff;
-            transform: translateY(-2px); box-shadow: 0 8px 25px rgba(168,85,247,0.25);
+            background: rgba(168,85,247,0.12); color: #ffffff;
+            border-color: rgba(168,85,247,0.35);
         }
-        body.light .special-tab:hover { color: #4c1d95; background: rgba(168,85,247,0.15); }
+        body.light .special-tab:hover { color: #6b21a8; background: rgba(168,85,247,0.1); }
         .special-tab.active {
-            background: rgba(168,85,247,0.25); border-color: rgba(168,85,247,0.6); color: #ffffff;
-            box-shadow: 0 0 25px rgba(168,85,247,0.4), 0 0 50px rgba(168,85,247,0.2);
+            background: rgba(168,85,247,0.2); border-color: rgba(168,85,247,0.5); color: #ffffff;
+            box-shadow: 0 0 25px rgba(168,85,247,0.35), 0 0 50px rgba(168,85,247,0.15);
         }
-        body.light .special-tab.active { background: rgba(168,85,247,0.2); color: #4c1d95; box-shadow: 0 0 15px rgba(168,85,247,0.3); }
-
-        .special-tab .emoji { font-size: 1.2em; }
+        body.light .special-tab.active { background: rgba(168,85,247,0.12); color: #6b21a8; box-shadow: 0 0 15px rgba(168,85,247,0.2); }
 
         /* ===================== BADGES ===================== */
         .badge {
@@ -130,7 +128,6 @@
         }
         body.light .badge { background: rgba(255,255,255,0.95); color: #3b82f6; }
 
-        /* Special badge color for notes & photos */
         .special-tab .badge { border-color: rgba(168,85,247,0.8); box-shadow: 0 0 10px rgba(168,85,247,0.9), 0 0 25px rgba(168,85,247,0.5); animation: badgePulsePurple 2s infinite; }
         body.light .special-tab .badge { color: #9333ea; border-color: rgba(168,85,247,0.6); }
 
@@ -212,7 +209,7 @@
         body.light .delete-btn:hover { color: #ef4444; background: rgba(239,68,68,0.1); }
 
         .clear-all { text-align: center; margin-top: 15px; }
-        .clear-all button { background: none; border: none; color: #334155; font-size: 0.75em; cursor: pointer; text-decoration: underline; font-family: 'Poppins', sans-serif; letter-spacing: 0.3px; }
+        .clear-all button { background: none; border: none; color: #334155; font-size: 0.75em; cursor: pointer; text-decoration: underline; font-family: 'Poppins', sans-serif; }
         body.light .clear-all button { color: #94a3b8; }
         .clear-all button:hover { color: #64748b; }
 
@@ -233,40 +230,39 @@
         .footer { text-align: center; padding: 10px 20px 20px; color: #334155; font-size: 0.8em; letter-spacing: 1px; font-family: 'Poppins', sans-serif; }
         body.light .footer { color: #94a3b8; }
 
-        .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: rgba(15,23,42,0.95); border: 1px solid rgba(59,130,246,0.3); color: #ffffff; padding: 11px 24px; border-radius: 50px; font-size: 0.85em; font-weight: 500; box-shadow: 0 8px 30px rgba(0,0,0,0.4), 0 0 20px rgba(59,130,246,0.15); transition: transform 0.4s ease; z-index: 999; pointer-events: none; font-family: 'Poppins', sans-serif; }
+        .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: rgba(15,23,42,0.95); border: 1px solid rgba(59,130,246,0.3); color: #ffffff; padding: 11px 24px; border-radius: 50px; font-size: 0.85em; font-weight: 500; box-shadow: 0 8px 30px rgba(0,0,0,0.4); transition: transform 0.4s ease; z-index: 999; pointer-events: none; font-family: 'Poppins', sans-serif; }
         body.light .toast { background: rgba(255,255,255,0.95); color: #334155; border-color: rgba(100,116,139,0.2); box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
         .toast.show { transform: translateX(-50%) translateY(0); }
 
         /* ===================== NOTES ===================== */
         .notes-section { display: none; min-height: 500px; }
         .notes-section.active { display: block; animation: fadeIn 0.4s ease; }
-        .notes-board { position: relative; min-height: 520px; width: 100%; background: rgba(255,255,255,0.015); border-radius: 24px; border: 1px dashed rgba(255,255,255,0.06); margin-top: 20px; overflow: hidden; transition: all 0.4s ease; }
+        .notes-board { position: relative; min-height: 520px; width: 100%; background: rgba(255,255,255,0.015); border-radius: 24px; border: 1px dashed rgba(255,255,255,0.06); margin-top: 20px; overflow: hidden; }
         body.light .notes-board { background: rgba(255,255,255,0.4); border-color: rgba(100,116,139,0.15); }
         .notes-board-hint { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: #334155; pointer-events: none; font-size: 0.85em; font-family: 'Poppins', sans-serif; }
         body.light .notes-board-hint { color: #94a3b8; }
         .notes-board-hint .hint-emoji { font-size: 2em; display: block; margin-bottom: 8px; }
 
-        .add-note-btn { display: flex; align-items: center; gap: 10px; margin: 0 auto; padding: 13px 28px; background: rgba(168,85,247,0.15); color: #ffffff; border: 1px solid rgba(168,85,247,0.3); border-radius: 50px; font-family: 'Poppins', sans-serif; font-size: 0.9em; font-weight: 600; cursor: pointer; transition: all 0.3s ease; backdrop-filter: blur(10px); letter-spacing: 0.3px; }
+        .add-note-btn { display: flex; align-items: center; gap: 10px; margin: 0 auto; padding: 13px 28px; background: rgba(168,85,247,0.15); color: #ffffff; border: 1px solid rgba(168,85,247,0.3); border-radius: 50px; font-family: 'Poppins', sans-serif; font-size: 0.9em; font-weight: 600; cursor: pointer; transition: all 0.3s ease; backdrop-filter: blur(10px); }
         body.light .add-note-btn { color: #6b21a8; background: rgba(168,85,247,0.1); border-color: rgba(168,85,247,0.25); }
-        .add-note-btn:hover { background: rgba(168,85,247,0.25); box-shadow: 0 0 30px rgba(168,85,247,0.4), 0 0 60px rgba(168,85,247,0.15); transform: translateY(-2px); }
+        .add-note-btn:hover { background: rgba(168,85,247,0.25); box-shadow: 0 0 30px rgba(168,85,247,0.4); transform: translateY(-2px); }
         .add-note-btn .plus { font-size: 1.3em; font-weight: 300; line-height: 1; }
 
         .sticker { position: absolute; width: 185px; min-height: 165px; border-radius: 4px; padding: 30px 15px 14px; cursor: grab; transition: filter 0.2s ease, box-shadow 0.2s ease; z-index: 10; display: flex; flex-direction: column; }
         .sticker:hover { z-index: 20; filter: brightness(1.05) saturate(1.1); }
         .sticker.is-dragging { cursor: grabbing; z-index: 100; transform: rotate(2deg) scale(1.05) !important; filter: brightness(1.08) saturate(1.15); }
-        .sticker-delete { position: absolute; top: 8px; right: 10px; background: none; border: none; font-size: 1em; cursor: pointer; color: rgba(0,0,0,0.3); transition: color 0.2s ease; line-height: 1; padding: 2px; }
+        .sticker-delete { position: absolute; top: 8px; right: 10px; background: none; border: none; font-size: 1em; cursor: pointer; color: rgba(0,0,0,0.3); transition: color 0.2s ease; padding: 2px; }
         .sticker-delete:hover { color: rgba(0,0,0,0.65); }
-        .sticker-author { position: absolute; top: 10px; left: 13px; font-size: 0.65em; font-family: 'Caveat', cursive; color: rgba(0,0,0,0.45); font-weight: 700; letter-spacing: 0.3px; }
+        .sticker-author { position: absolute; top: 10px; left: 13px; font-size: 0.65em; font-family: 'Caveat', cursive; color: rgba(0,0,0,0.45); font-weight: 700; }
         .sticker textarea { flex: 1; background: transparent; border: none; outline: none; font-family: 'Caveat', cursive; font-size: 1.2em; color: rgba(0,0,0,0.8); resize: none; width: 100%; min-height: 100px; line-height: 1.5; cursor: text; font-weight: 600; }
-        .sticker textarea::placeholder { color: rgba(0,0,0,0.2); }
 
         .note-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); z-index: 500; align-items: center; justify-content: center; }
         .note-modal-overlay.show { display: flex; animation: fadeIn 0.2s ease; }
-        .note-modal { background: #0f172a; border: 1px solid rgba(59,130,246,0.2); border-radius: 24px; padding: 30px; width: 90%; max-width: 400px; box-shadow: 0 25px 60px rgba(0,0,0,0.5), 0 0 40px rgba(59,130,246,0.1); }
-        body.light .note-modal { background: #ffffff; border-color: rgba(100,116,139,0.15); box-shadow: 0 25px 60px rgba(0,0,0,0.1); }
+        .note-modal { background: #0f172a; border: 1px solid rgba(168,85,247,0.2); border-radius: 24px; padding: 30px; width: 90%; max-width: 400px; box-shadow: 0 25px 60px rgba(0,0,0,0.5), 0 0 40px rgba(168,85,247,0.1); }
+        body.light .note-modal { background: #ffffff; border-color: rgba(168,85,247,0.15); box-shadow: 0 25px 60px rgba(0,0,0,0.1); }
         .note-modal h3 { font-size: 1em; color: #ffffff; margin-bottom: 16px; text-align: center; letter-spacing: 1px; font-weight: 500; font-family: 'Poppins', sans-serif; }
         body.light .note-modal h3 { color: #334155; }
-        .note-modal textarea { width: 100%; height: 140px; border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; padding: 16px; font-family: 'Caveat', cursive; font-size: 1.3em; color: #ffffff; background: rgba(255,255,255,0.03); resize: none; outline: none; transition: all 0.3s ease; line-height: 1.5; }
+        .note-modal textarea { width: 100%; height: 140px; border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; padding: 16px; font-family: 'Caveat', cursive; font-size: 1.3em; color: #ffffff; background: rgba(255,255,255,0.03); resize: none; outline: none; line-height: 1.5; }
         body.light .note-modal textarea { border-color: rgba(100,116,139,0.15); color: #334155; background: rgba(100,116,139,0.05); }
         .note-modal textarea:focus { border-color: rgba(168,85,247,0.4); box-shadow: 0 0 0 3px rgba(168,85,247,0.08); }
         .note-modal textarea::placeholder { color: #334155; }
@@ -281,7 +277,7 @@
         .btn-cancel { background: rgba(255,255,255,0.04); color: #475569; border: 1px solid rgba(255,255,255,0.06) !important; }
         body.light .btn-cancel { background: rgba(100,116,139,0.08); border-color: rgba(100,116,139,0.15) !important; }
         .btn-cancel:hover { background: rgba(255,255,255,0.07); color: #ffffff; }
-        body.light .btn-cancel:hover { color: #334155; background: rgba(100,116,139,0.15); }
+        body.light .btn-cancel:hover { color: #334155; }
         .btn-post { background: rgba(168,85,247,0.15); color: #ffffff; border: 1px solid rgba(168,85,247,0.3) !important; }
         body.light .btn-post { color: #6b21a8; background: rgba(168,85,247,0.1); }
         .btn-post:hover { background: rgba(168,85,247,0.25); box-shadow: 0 0 25px rgba(168,85,247,0.4); }
@@ -300,10 +296,8 @@
         body.light .progress-bar-bg { background: rgba(100,116,139,0.15); }
         .progress-bar-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #c084fc, #818cf8); border-radius: 10px; transition: width 0.3s ease; }
         .progress-text { font-size: 0.75em; color: #475569; font-family: 'Poppins', sans-serif; }
-        
+
         .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-        @media (max-width: 500px) { .photo-grid { grid-template-columns: repeat(2, 1fr); } .special-tabs { flex-direction: column; padding: 0 20px; } .special-tab { width: 100%; } }
-        
         .photo-card { position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 1; cursor: pointer; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.06); }
         body.light .photo-card { border-color: rgba(100,116,139,0.1); }
         .photo-card:hover { transform: scale(1.03); box-shadow: 0 8px 30px rgba(168,85,247,0.3), 0 0 20px rgba(168,85,247,0.15); z-index: 2; }
@@ -311,7 +305,7 @@
         .photo-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .photo-card .photo-overlay { position: absolute; inset: 0; background: linear-gradient(transparent 60%, rgba(0,0,0,0.6)); opacity: 0; transition: opacity 0.3s ease; display: flex; align-items: flex-end; padding: 12px; }
         .photo-card:hover .photo-overlay { opacity: 1; }
-        .photo-overlay-date { color: rgba(255,255,255,0.9); font-size: 0.72em; font-family: 'Poppins', sans-serif; letter-spacing: 0.5px; }
+        .photo-overlay-date { color: rgba(255,255,255,0.9); font-size: 0.72em; font-family: 'Poppins', sans-serif; }
         .photo-delete-btn { position: absolute; top: 8px; right: 8px; width: 28px; height: 28px; border-radius: 50%; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); border: none; color: rgba(255,255,255,0.8); font-size: 0.9em; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; transition: all 0.2s ease; z-index: 5; }
         .photo-card:hover .photo-delete-btn { opacity: 1; }
         .photo-delete-btn:hover { background: rgba(239,68,68,0.7); color: white; }
@@ -319,10 +313,10 @@
         .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); backdrop-filter: blur(10px); z-index: 600; align-items: center; justify-content: center; cursor: pointer; }
         .lightbox.show { display: flex; animation: fadeIn 0.3s ease; }
         .lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 12px; object-fit: contain; cursor: default; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
-        .lightbox-close { position: absolute; top: 20px; right: 24px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); color: white; width: 40px; height: 40px; border-radius: 50%; font-size: 1.2em; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; }
+        .lightbox-close { position: absolute; top: 20px; right: 24px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); color: white; width: 40px; height: 40px; border-radius: 50%; font-size: 1.2em; cursor: pointer; display: flex; align-items: center; justify-content: center; }
         .lightbox-close:hover { background: rgba(255,255,255,0.2); }
         .lightbox-caption { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.7); font-family: 'Caveat', cursive; font-size: 1.3em; text-align: center; }
-        .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.08); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); color: white; width: 44px; height: 44px; border-radius: 50%; font-size: 1.2em; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; }
+        .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.08); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); color: white; width: 44px; height: 44px; border-radius: 50%; font-size: 1.2em; cursor: pointer; display: flex; align-items: center; justify-content: center; }
         .lightbox-nav:hover { background: rgba(255,255,255,0.18); }
         .lightbox-prev { left: 16px; }
         .lightbox-next { right: 16px; }
@@ -333,29 +327,30 @@
         body.light .photos-empty p { color: #94a3b8; }
         .photo-count { text-align: center; margin-top: 16px; font-size: 0.72em; color: #334155; letter-spacing: 0.5px; }
         body.light .photo-count { color: #94a3b8; }
+
+        @media (max-width: 500px) {
+            .header h1 { font-size: 2em; }
+            .tabs { gap: 8px; }
+            .tab { padding: 8px 13px; font-size: 0.75em; }
+            .special-tab { padding: 8px 13px; font-size: 0.75em; }
+            .input-row { flex-direction: column; }
+            body { padding: 12px; }
+            .item { padding: 12px 14px; }
+            .photo-grid { grid-template-columns: repeat(2, 1fr); }
+        }
     </style>
 </head>
 <body>
-
     <div class="container">
         <div class="header">
             <h1>ours <span>♡</span></h1>
             <p>all the things we wanna do together</p>
-            <div class="sync-status" id="syncStatus">
-                <span class="dot offline"></span> connecting...
-            </div>
+            <div class="sync-status" id="syncStatus"><span class="dot offline"></span> connecting...</div>
         </div>
 
-        <!-- MAIN TABS -->
         <div class="tabs" id="mainTabs"></div>
-
-        <!-- DIVIDER -->
         <div class="divider-text">✦ our space ✦</div>
-
-        <!-- SPECIAL TABS -->
         <div class="special-tabs" id="specialTabs"></div>
-
-        <!-- CONTENT SECTIONS -->
         <div id="sections"></div>
 
         <div class="theme-toggle">
@@ -363,7 +358,6 @@
             <div class="toggle-switch" onclick="toggleTheme()"></div>
             <span>☀️</span>
         </div>
-
         <div class="footer">A&A 2026</div>
     </div>
 
@@ -395,7 +389,6 @@
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
     <script>
-        // ===================== FIREBASE =====================
         const firebaseConfig = {
             apiKey: "AIzaSyCDAmRuuUKsJMjaYyvDBsmETeo4cr11vW8",
             authDomain: "ours-752bf.firebaseapp.com",
@@ -412,53 +405,45 @@
         const notesRef = db.ref('sticker-notes');
         const photosRef = db.ref('photos');
 
-        // ===================== CLOUDINARY =====================
         const CLOUD_NAME = 'dskunbsq4';
         const UPLOAD_PRESET = 'dskunbsq4';
 
         firebase.database().ref('.info/connected').on('value', (snap) => {
             const status = document.getElementById('syncStatus');
-            if (snap.val() === true) {
-                status.innerHTML = '<span class="dot online"></span> synced ♡';
-            } else {
-                status.innerHTML = '<span class="dot offline"></span> offline';
-            }
+            if (snap.val() === true) status.innerHTML = '<span class="dot online"></span> synced ♡';
+            else status.innerHTML = '<span class="dot offline"></span> offline';
         });
 
-        // ===================== THEME =====================
         function toggleTheme() {
             document.body.classList.toggle('light');
             localStorage.setItem('ours-theme', document.body.classList.contains('light') ? 'light' : 'dark');
             rerenderAllStickers();
         }
-
         const savedTheme = localStorage.getItem('ours-theme');
         if (savedTheme === 'light') document.body.classList.add('light');
 
-        // ===================== CATEGORIES =====================
         const categories = [
-            { id: 'places',  name: 'places',     placeholder: 'cafe, city, park...',        emptyEmoji: '🗺️', emptyText: 'no places yet... where should we go?' },
-            { id: 'movies',  name: 'movies',      placeholder: 'movie or show name...',      emptyEmoji: '🍿', emptyText: 'nothing here yet... lets pick something!' },
-            { id: 'dates',   name: 'date ideas',  placeholder: 'something fun or cute...',   emptyEmoji: '✨', emptyText: 'add our first date idea!' },
-            { id: 'todos',   name: 'to do',       placeholder: 'stuff we need to do...',     emptyEmoji: '📝', emptyText: 'nothing to do? thats suspicious' },
-            { id: 'books',   name: 'books',       placeholder: 'title or author...',         emptyEmoji: '📖', emptyText: 'empty shelf... lets fix that' },
-            { id: 'recipes', name: 'recipes',     placeholder: 'dish name or link...',       emptyEmoji: '👨‍🍳', emptyText: 'no recipes yet... im hungry tho' },
-            { id: 'dreams',  name: 'dreams',      placeholder: 'the crazier the better...', emptyEmoji: '💫', emptyText: 'dream big baby... add something' },
-            { id: 'games',   name: 'games',       placeholder: 'game name or idea...',       emptyEmoji: '🕹️', emptyText: 'no games yet... what should we play?' },
-            { id: 'random',  name: 'random',      placeholder: 'anything else...',           emptyEmoji: '🤷', emptyText: 'this is for the stuff that doesnt fit anywhere' }
+            { id: 'places', name: 'places', placeholder: 'cafe, city, park...', emptyEmoji: '🗺️', emptyText: 'no places yet... where should we go?' },
+            { id: 'movies', name: 'movies', placeholder: 'movie or show name...', emptyEmoji: '🍿', emptyText: 'nothing here yet... lets pick something!' },
+            { id: 'dates', name: 'date ideas', placeholder: 'something fun or cute...', emptyEmoji: '✨', emptyText: 'add our first date idea!' },
+            { id: 'todos', name: 'to do', placeholder: 'stuff we need to do...', emptyEmoji: '📝', emptyText: 'nothing to do? thats suspicious' },
+            { id: 'books', name: 'books', placeholder: 'title or author...', emptyEmoji: '📖', emptyText: 'empty shelf... lets fix that' },
+            { id: 'recipes', name: 'recipes', placeholder: 'dish name or link...', emptyEmoji: '👨‍🍳', emptyText: 'no recipes yet... im hungry tho' },
+            { id: 'dreams', name: 'dreams', placeholder: 'the crazier the better...', emptyEmoji: '💫', emptyText: 'dream big baby... add something' },
+            { id: 'games', name: 'games', placeholder: 'game name or idea...', emptyEmoji: '🕹️', emptyText: 'no games yet... what should we play?' },
+            { id: 'random', name: 'random', placeholder: 'anything else...', emptyEmoji: '🤷', emptyText: 'this is for the stuff that doesnt fit anywhere' }
         ];
 
         const noteColors = [
-            { bg: '#fde047', shadow: 'rgba(234,179,8,0.6)',   glow: 'rgba(234,179,8,0.35)' },
+            { bg: '#fde047', shadow: 'rgba(234,179,8,0.6)', glow: 'rgba(234,179,8,0.35)' },
             { bg: '#f9a8d4', shadow: 'rgba(236,72,153,0.55)', glow: 'rgba(236,72,153,0.3)' },
             { bg: '#93c5fd', shadow: 'rgba(59,130,246,0.55)', glow: 'rgba(59,130,246,0.3)' },
-            { bg: '#86efac', shadow: 'rgba(34,197,94,0.55)',  glow: 'rgba(34,197,94,0.3)' },
+            { bg: '#86efac', shadow: 'rgba(34,197,94,0.55)', glow: 'rgba(34,197,94,0.3)' },
             { bg: '#c4b5fd', shadow: 'rgba(139,92,246,0.55)', glow: 'rgba(139,92,246,0.3)' },
             { bg: '#fdba74', shadow: 'rgba(249,115,22,0.55)', glow: 'rgba(249,115,22,0.3)' },
         ];
 
         let selectedColor = 0;
-
         function buildColorPicker() {
             const picker = document.getElementById('colorPicker');
             noteColors.forEach((c, i) => {
@@ -466,32 +451,15 @@
                 dot.className = 'color-dot' + (i === 0 ? ' selected' : '');
                 dot.style.background = c.bg;
                 dot.style.boxShadow = `0 3px 10px ${c.shadow}`;
-                dot.onclick = () => {
-                    document.querySelectorAll('.color-dot').forEach(d => d.classList.remove('selected'));
-                    dot.classList.add('selected');
-                    selectedColor = i;
-                };
+                dot.onclick = () => { document.querySelectorAll('.color-dot').forEach(d => d.classList.remove('selected')); dot.classList.add('selected'); selectedColor = i; };
                 picker.appendChild(dot);
             });
         }
 
-        let localData = {};
-        let allStickers = {};
-        let allPhotos = {};
+        let localData = {}, allStickers = {}, allPhotos = {};
 
-        function showToast(msg) {
-            const t = document.getElementById('toast');
-            t.textContent = msg;
-            t.classList.add('show');
-            setTimeout(() => t.classList.remove('show'), 2000);
-        }
-
-        function getDate() {
-            const d = new Date();
-            const months = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
-            return `${months[d.getMonth()]} ${d.getDate()}`;
-        }
-
+        function showToast(msg) { const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 2000); }
+        function getDate() { const d = new Date(); const m = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec']; return `${m[d.getMonth()]} ${d.getDate()}`; }
         function getLocalSeen() { const s = localStorage.getItem('ours-seen'); return s ? JSON.parse(s) : {}; }
         function saveLocalSeen(seen) { localStorage.setItem('ours-seen', JSON.stringify(seen)); }
 
@@ -499,9 +467,7 @@
             const seen = getLocalSeen();
             if (catId === 'photos') return Math.max(0, Object.keys(allPhotos).length - (seen[catId] || 0));
             if (catId === 'notes') return Math.max(0, Object.keys(allStickers).length - (seen[catId] || 0));
-            
-            const items = localData[catId] || [];
-            return Math.max(0, items.length - (seen[catId] || 0));
+            return Math.max(0, (localData[catId] || []).length - (seen[catId] || 0));
         }
 
         function markAsSeen(catId) {
@@ -509,253 +475,123 @@
             if (catId === 'photos') seen[catId] = Object.keys(allPhotos).length;
             else if (catId === 'notes') seen[catId] = Object.keys(allStickers).length;
             else seen[catId] = (localData[catId] || []).length;
-            
             saveLocalSeen(seen);
             updateTabBadge(catId);
         }
 
-        // Data Listeners
-        dataRef.on('value', (snapshot) => {
-            localData = snapshot.val() || {};
-            renderAll();
-            updateAllTabBadges();
-        });
-
-        notesRef.on('value', (snap) => {
-            updateTabBadge('notes');
-        });
-
-        photosRef.on('value', (snap) => {
-            allPhotos = snap.val() || {};
-            renderPhotos();
-            updateTabBadge('photos');
-        });
-
+        dataRef.on('value', (snapshot) => { localData = snapshot.val() || {}; renderAll(); updateAllTabBadges(); });
+        notesRef.on('value', () => { updateTabBadge('notes'); });
+        photosRef.on('value', (snap) => { allPhotos = snap.val() || {}; renderPhotos(); updateTabBadge('photos'); });
         function saveToFirebase() { dataRef.set(localData); }
 
-        // ===================== BUILD UI =====================
         function buildTabs() {
-            const mainTabsEl = document.getElementById('mainTabs');
-            const specialTabsEl = document.getElementById('specialTabs');
+            const mainEl = document.getElementById('mainTabs');
+            const specialEl = document.getElementById('specialTabs');
 
-            // 1. Regular Categories
             categories.forEach((cat, i) => {
                 const btn = document.createElement('button');
                 btn.className = 'tab' + (i === 0 ? ' active' : '');
                 btn.dataset.cat = cat.id;
                 btn.innerHTML = cat.name;
                 btn.addEventListener('click', () => switchTab(cat.id));
-                mainTabsEl.appendChild(btn);
+                mainEl.appendChild(btn);
             });
 
-            // 2. Special Categories (Our Space)
             const photosBtn = document.createElement('button');
             photosBtn.className = 'special-tab';
             photosBtn.dataset.cat = 'photos';
-            photosBtn.innerHTML = '<span class="emoji">📸</span> photos';
+            photosBtn.innerHTML = 'photos';
             photosBtn.addEventListener('click', () => switchTab('photos'));
-            specialTabsEl.appendChild(photosBtn);
+            specialEl.appendChild(photosBtn);
 
             const notesBtn = document.createElement('button');
             notesBtn.className = 'special-tab';
             notesBtn.dataset.cat = 'notes';
-            notesBtn.innerHTML = '<span class="emoji">💌</span> notes';
+            notesBtn.innerHTML = 'notes';
             notesBtn.addEventListener('click', () => switchTab('notes'));
-            specialTabsEl.appendChild(notesBtn);
+            specialEl.appendChild(notesBtn);
         }
 
         function buildSections() {
-            const sectionsEl = document.getElementById('sections');
+            const el = document.getElementById('sections');
 
             categories.forEach((cat, i) => {
-                const section = document.createElement('div');
-                section.className = 'category-section' + (i === 0 ? ' active' : '');
-                section.id = 'section-' + cat.id;
-                section.innerHTML = `
-                    <div class="section-header"><h2>${cat.name}</h2></div>
-                    <div class="input-row">
-                        <input type="text" id="input-${cat.id}" placeholder="${cat.placeholder}">
-                        <button class="add-btn" onclick="addItem('${cat.id}')">add +</button>
-                    </div>
-                    <ul class="items-list" id="list-${cat.id}"></ul>
-                    <div class="clear-all"><button onclick="clearAll('${cat.id}')">clear all</button></div>
-                `;
-                sectionsEl.appendChild(section);
+                const s = document.createElement('div');
+                s.className = 'category-section' + (i === 0 ? ' active' : '');
+                s.id = 'section-' + cat.id;
+                s.innerHTML = `<div class="section-header"><h2>${cat.name}</h2></div><div class="input-row"><input type="text" id="input-${cat.id}" placeholder="${cat.placeholder}"><button class="add-btn" onclick="addItem('${cat.id}')">add +</button></div><ul class="items-list" id="list-${cat.id}"></ul><div class="clear-all"><button onclick="clearAll('${cat.id}')">clear all</button></div>`;
+                el.appendChild(s);
             });
 
-            // Photos section
-            const photosSection = document.createElement('div');
-            photosSection.className = 'photos-section';
-            photosSection.id = 'section-photos';
-            photosSection.innerHTML = `
-                <div class="section-header"><h2>our photos</h2></div>
-                <div class="photos-upload-area">
-                    <button class="upload-btn" onclick="document.getElementById('photoFileInput').click()">
-                        <span class="plus">+</span> add photo
-                    </button>
-                    <div class="upload-progress" id="uploadProgress">
-                        <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressBarFill"></div></div>
-                        <div class="progress-text" id="progressText">uploading...</div>
-                    </div>
-                </div>
-                <div class="photo-grid" id="photoGrid"></div>
-                <div class="photos-empty" id="photosEmpty">
-                    <span class="empty-emoji">📷</span>
-                    <p>no photos yet...<br>add your first memory together!</p>
-                </div>
-                <div class="photo-count" id="photoCount"></div>
-            `;
-            sectionsEl.appendChild(photosSection);
+            const ps = document.createElement('div');
+            ps.className = 'photos-section'; ps.id = 'section-photos';
+            ps.innerHTML = `<div class="section-header"><h2>our photos</h2></div><div class="photos-upload-area"><button class="upload-btn" onclick="document.getElementById('photoFileInput').click()"><span class="plus">+</span> add photo</button><div class="upload-progress" id="uploadProgress"><div class="progress-bar-bg"><div class="progress-bar-fill" id="progressBarFill"></div></div><div class="progress-text" id="progressText">uploading...</div></div></div><div class="photo-grid" id="photoGrid"></div><div class="photos-empty" id="photosEmpty"><span class="empty-emoji">📷</span><p>no photos yet...<br>add your first memory together!</p></div><div class="photo-count" id="photoCount"></div>`;
+            el.appendChild(ps);
 
-            // Notes section
-            const notesSection = document.createElement('div');
-            notesSection.className = 'notes-section';
-            notesSection.id = 'section-notes';
-            notesSection.innerHTML = `
-                <div class="section-header"><h2>notes</h2></div>
-                <div style="text-align:center; margin-bottom: 20px;">
-                    <button class="add-note-btn" onclick="openNoteModal()">
-                        <span class="plus">+</span> leave a note
-                    </button>
-                </div>
-                <div class="notes-board" id="notesBoard">
-                    <div class="notes-board-hint" id="notesBoardHint">
-                        <span class="hint-emoji">💌</span>
-                        <p>no notes yet...<br>leave one for each other</p>
-                    </div>
-                </div>
-            `;
-            sectionsEl.appendChild(notesSection);
+            const ns = document.createElement('div');
+            ns.className = 'notes-section'; ns.id = 'section-notes';
+            ns.innerHTML = `<div class="section-header"><h2>notes</h2></div><div style="text-align:center; margin-bottom: 20px;"><button class="add-note-btn" onclick="openNoteModal()"><span class="plus">+</span> leave a note</button></div><div class="notes-board" id="notesBoard"><div class="notes-board-hint" id="notesBoardHint"><span class="hint-emoji">💌</span><p>no notes yet...<br>leave one for each other</p></div></div>`;
+            el.appendChild(ns);
 
             document.querySelectorAll('.input-row input').forEach(input => {
-                input.addEventListener('keypress', (e) => {
-                    if (e.key === 'Enter') addItem(input.id.replace('input-', ''));
-                });
+                input.addEventListener('keypress', (e) => { if (e.key === 'Enter') addItem(input.id.replace('input-', '')); });
             });
         }
 
         function switchTab(catId) {
             document.querySelectorAll('.tab, .special-tab').forEach(t => t.classList.remove('active'));
             document.querySelector(`[data-cat="${catId}"]`).classList.add('active');
-            
             document.querySelectorAll('.category-section, .notes-section, .photos-section').forEach(s => s.classList.remove('active'));
             document.getElementById('section-' + catId).classList.add('active');
-            
             markAsSeen(catId);
-
-            if (catId !== 'notes' && catId !== 'photos') {
-                setTimeout(() => document.getElementById('input-' + catId).focus(), 100);
-            }
+            if (catId !== 'notes' && catId !== 'photos') setTimeout(() => document.getElementById('input-' + catId).focus(), 100);
         }
 
         function updateTabBadge(catId) {
             const tab = document.querySelector(`[data-cat="${catId}"]`);
             if (!tab) return;
-            
             const newCount = getNewCount(catId);
-            const existingBadge = tab.querySelector('.badge');
-            if (existingBadge) existingBadge.remove();
-            
-            // Restore proper text based on type
-            if (catId === 'photos') tab.innerHTML = '<span class="emoji">📸</span> photos';
-            else if (catId === 'notes') tab.innerHTML = '<span class="emoji">💌</span> notes';
-            else {
-                const cat = categories.find(c => c.id === catId);
-                if (cat) tab.innerHTML = cat.name;
-            }
-
-            if (newCount > 0) {
-                const badge = document.createElement('span');
-                badge.className = 'badge';
-                badge.textContent = '+' + newCount;
-                tab.appendChild(badge);
-            }
+            const existing = tab.querySelector('.badge');
+            if (existing) existing.remove();
+            if (catId === 'photos') tab.innerHTML = 'photos';
+            else if (catId === 'notes') tab.innerHTML = 'notes';
+            else { const cat = categories.find(c => c.id === catId); if (cat) tab.innerHTML = cat.name; }
+            if (newCount > 0) { const b = document.createElement('span'); b.className = 'badge'; b.textContent = '+' + newCount; tab.appendChild(b); }
         }
 
-        function updateAllTabBadges() { 
-            categories.forEach(cat => updateTabBadge(cat.id)); 
-            updateTabBadge('photos');
-            updateTabBadge('notes');
-        }
+        function updateAllTabBadges() { categories.forEach(cat => updateTabBadge(cat.id)); updateTabBadge('photos'); updateTabBadge('notes'); }
 
         function addItem(catId) {
-            const input = document.getElementById('input-' + catId);
-            const text = input.value.trim();
-            if (!text) return;
+            const input = document.getElementById('input-' + catId); const text = input.value.trim(); if (!text) return;
             if (!localData[catId]) localData[catId] = [];
             localData[catId].unshift({ text, done: false, date: getDate() });
-            
-            saveToFirebase();
-            // Mark as seen immediately so sender doesn't see a badge
-            setTimeout(() => markAsSeen(catId), 100);
-            
-            input.value = '';
-            showToast('added ♡');
+            saveToFirebase(); setTimeout(() => markAsSeen(catId), 100); input.value = ''; showToast('added ♡');
         }
 
         function toggleItem(catId, index) { localData[catId][index].done = !localData[catId][index].done; saveToFirebase(); }
-
-        function deleteItem(catId, index) {
-            localData[catId].splice(index, 1);
-            saveToFirebase();
-            setTimeout(() => markAsSeen(catId), 100);
-            showToast('removed');
-        }
-
-        function clearAll(catId) {
-            if (!confirm('Clear all items in this category?')) return;
-            localData[catId] = [];
-            saveToFirebase();
-            setTimeout(() => markAsSeen(catId), 100);
-        }
+        function deleteItem(catId, index) { localData[catId].splice(index, 1); saveToFirebase(); setTimeout(() => markAsSeen(catId), 100); showToast('removed'); }
+        function clearAll(catId) { if (!confirm('Clear all items in this category?')) return; localData[catId] = []; saveToFirebase(); setTimeout(() => markAsSeen(catId), 100); }
 
         function renderList(catId) {
-            const items = localData[catId] || [];
-            const list = document.getElementById('list-' + catId);
+            const items = localData[catId] || []; const list = document.getElementById('list-' + catId);
             const cat = categories.find(c => c.id === catId);
-
-            if (items.length === 0) {
-                list.innerHTML = `<div class="empty-state"><span class="empty-emoji">${cat.emptyEmoji}</span><p>${cat.emptyText}</p></div>`;
-                return;
-            }
-
+            if (items.length === 0) { list.innerHTML = `<div class="empty-state"><span class="empty-emoji">${cat.emptyEmoji}</span><p>${cat.emptyText}</p></div>`; return; }
             list.innerHTML = '';
             items.forEach((item, i) => {
-                const li = document.createElement('li');
-                li.className = `item ${item.done ? 'done' : ''}`;
-                li.draggable = true;
-                li.dataset.index = i;
-                li.dataset.cat = catId;
-                li.innerHTML = `
-                    <button class="check-btn ${item.done ? 'checked' : ''}" onclick="toggleItem('${catId}', ${i})">${item.done ? '✓' : ''}</button>
-                    <span class="item-text" ondblclick="enableEdit(this, '${catId}', ${i})">${item.text}</span>
-                    <span class="item-meta">${item.date}</span>
-                    <button class="delete-btn" onclick="deleteItem('${catId}', ${i})">×</button>
-                `;
-                li.addEventListener('dragstart', handleDragStart);
-                li.addEventListener('dragend', handleDragEnd);
-                li.addEventListener('dragover', handleDragOver);
-                li.addEventListener('drop', handleDrop);
+                const li = document.createElement('li'); li.className = `item ${item.done ? 'done' : ''}`; li.draggable = true; li.dataset.index = i; li.dataset.cat = catId;
+                li.innerHTML = `<button class="check-btn ${item.done ? 'checked' : ''}" onclick="toggleItem('${catId}', ${i})">${item.done ? '✓' : ''}</button><span class="item-text" ondblclick="enableEdit(this, '${catId}', ${i})">${item.text}</span><span class="item-meta">${item.date}</span><button class="delete-btn" onclick="deleteItem('${catId}', ${i})">×</button>`;
+                li.addEventListener('dragstart', handleDragStart); li.addEventListener('dragend', handleDragEnd); li.addEventListener('dragover', handleDragOver); li.addEventListener('drop', handleDrop);
                 list.appendChild(li);
             });
         }
 
         function enableEdit(span, catId, index) {
-            const currentText = span.innerText;
-            const input = document.createElement('input');
-            input.type = 'text';
-            input.value = currentText;
+            const currentText = span.innerText; const input = document.createElement('input'); input.type = 'text'; input.value = currentText;
             const isLight = document.body.classList.contains('light');
             input.style.cssText = `width:100%;border:none;background:transparent;border-bottom:1px solid #3b82f6;outline:none;font-family:Poppins,sans-serif;font-size:0.9em;color:${isLight ? '#334155' : '#ffffff'};`;
-            span.parentNode.replaceChild(input, span);
-            input.focus();
-            const saveEdit = () => {
-                const newText = input.value.trim();
-                if (newText && newText !== currentText) { localData[catId][index].text = newText; saveToFirebase(); }
-                renderList(catId);
-            };
-            input.addEventListener('blur', saveEdit);
-            input.addEventListener('keypress', (e) => { if (e.key === 'Enter') input.blur(); });
+            span.parentNode.replaceChild(input, span); input.focus();
+            const saveEdit = () => { const t = input.value.trim(); if (t && t !== currentText) { localData[catId][index].text = t; saveToFirebase(); } renderList(catId); };
+            input.addEventListener('blur', saveEdit); input.addEventListener('keypress', (e) => { if (e.key === 'Enter') input.blur(); });
         }
 
         function renderAll() { categories.forEach(cat => renderList(cat.id)); }
@@ -763,234 +599,111 @@
         let draggedItem = null, draggedCatId = null, draggedIndex = null;
         function handleDragStart(e) { draggedItem = this; draggedCatId = this.dataset.cat; draggedIndex = parseInt(this.dataset.index); this.classList.add('dragging'); e.dataTransfer.effectAllowed = 'move'; }
         function handleDragEnd() { this.classList.remove('dragging'); draggedItem = null; }
-        function handleDragOver(e) {
-            e.preventDefault(); const target = e.target.closest('.item');
-            if (target && target !== draggedItem && target.dataset.cat === draggedCatId) {
-                const list = target.parentNode; const children = Array.from(list.children);
-                if (draggedIndex < children.indexOf(target)) list.insertBefore(draggedItem, target.nextSibling); else list.insertBefore(draggedItem, target);
-            }
-        }
-        function handleDrop(e) {
-            e.preventDefault(); const target = e.target.closest('.item');
-            if (!target || target === draggedItem || target.dataset.cat !== draggedCatId) return;
-            const items = localData[draggedCatId]; const [movedItem] = items.splice(draggedIndex, 1);
-            const children = Array.from(target.parentNode.children); let newIndex = children.indexOf(draggedItem);
-            if (draggedIndex < newIndex) newIndex--; items.splice(newIndex, 0, movedItem); saveToFirebase();
-        }
+        function handleDragOver(e) { e.preventDefault(); const t = e.target.closest('.item'); if (t && t !== draggedItem && t.dataset.cat === draggedCatId) { const l = t.parentNode; const c = Array.from(l.children); if (draggedIndex < c.indexOf(t)) l.insertBefore(draggedItem, t.nextSibling); else l.insertBefore(draggedItem, t); } }
+        function handleDrop(e) { e.preventDefault(); const t = e.target.closest('.item'); if (!t || t === draggedItem || t.dataset.cat !== draggedCatId) return; const items = localData[draggedCatId]; const [m] = items.splice(draggedIndex, 1); const c = Array.from(t.parentNode.children); let n = c.indexOf(draggedItem); if (draggedIndex < n) n--; items.splice(n, 0, m); saveToFirebase(); }
 
-        // ===================== STICKER NOTES =====================
         function openNoteModal() { document.getElementById('noteModalOverlay').classList.add('show'); document.getElementById('noteTextarea').value = ''; setTimeout(() => document.getElementById('noteTextarea').focus(), 100); }
         function closeNoteModal() { document.getElementById('noteModalOverlay').classList.remove('show'); }
 
         function postNote() {
-            const text = document.getElementById('noteTextarea').value.trim();
-            if (!text) return;
+            const text = document.getElementById('noteTextarea').value.trim(); if (!text) return;
             const board = document.getElementById('notesBoard');
-            const x = Math.floor(Math.random() * (board.offsetWidth - 200));
-            const y = Math.floor(Math.random() * (board.offsetHeight - 180));
+            const x = Math.floor(Math.random() * (board.offsetWidth - 200)); const y = Math.floor(Math.random() * (board.offsetHeight - 180));
             const rotate = (Math.random() * 8 - 4).toFixed(1);
             notesRef.push({ text, color: selectedColor, x, y, rotate, date: getDate(), ts: Date.now() });
-            closeNoteModal();
-            setTimeout(() => markAsSeen('notes'), 100);
-            showToast('note posted ♡');
+            closeNoteModal(); setTimeout(() => markAsSeen('notes'), 100); showToast('note posted ♡');
         }
 
         function renderSticker(id, note) {
-            const board = document.getElementById('notesBoard');
-            const existing = document.getElementById('sticker-' + id);
-            if (existing) existing.remove();
-
-            const color = noteColors[note.color] || noteColors[0];
-            const isLight = document.body.classList.contains('light');
-
-            const el = document.createElement('div');
-            el.className = 'sticker';
-            el.id = 'sticker-' + id;
-            el.style.cssText = `
-                left: ${note.x}px; top: ${note.y}px;
-                background: ${color.bg};
-                box-shadow: 4px 6px 25px ${color.shadow}, 0 0 ${isLight ? '15px' : '30px'} ${color.glow};
-                transform: rotate(${note.rotate}deg);
-                border: 1px solid rgba(255,255,255,${isLight ? '0.7' : '0.2'});
-            `;
-
-            el.innerHTML = `
-                <button class="sticker-delete" onclick="deleteSticker('${id}')">✕</button>
-                <span class="sticker-author">${note.date}</span>
-                <textarea readonly>${note.text}</textarea>
-            `;
-
-            makeStickerDraggable(el, id);
-            board.appendChild(el);
-            const hint = document.getElementById('notesBoardHint');
-            if (hint) hint.style.display = 'none';
+            const board = document.getElementById('notesBoard'); const existing = document.getElementById('sticker-' + id); if (existing) existing.remove();
+            const color = noteColors[note.color] || noteColors[0]; const isLight = document.body.classList.contains('light');
+            const el = document.createElement('div'); el.className = 'sticker'; el.id = 'sticker-' + id;
+            el.style.cssText = `left:${note.x}px;top:${note.y}px;background:${color.bg};box-shadow:4px 6px 25px ${color.shadow}, 0 0 ${isLight ? '15px' : '30px'} ${color.glow};transform:rotate(${note.rotate}deg);border:1px solid rgba(255,255,255,${isLight ? '0.7' : '0.2'});`;
+            el.innerHTML = `<button class="sticker-delete" onclick="deleteSticker('${id}')">✕</button><span class="sticker-author">${note.date}</span><textarea readonly>${note.text}</textarea>`;
+            makeStickerDraggable(el, id); board.appendChild(el);
+            const hint = document.getElementById('notesBoardHint'); if (hint) hint.style.display = 'none';
         }
 
         function rerenderAllStickers() { Object.keys(allStickers).forEach(id => renderSticker(id, allStickers[id])); }
 
         function makeStickerDraggable(el, id) {
             let startX, startY, startLeft, startTop, isDragging = false;
-            el.addEventListener('mousedown', (e) => {
-                if (e.target.classList.contains('sticker-delete') || e.target.tagName === 'TEXTAREA') return;
-                isDragging = true; startX = e.clientX; startY = e.clientY;
-                startLeft = parseInt(el.style.left) || 0; startTop = parseInt(el.style.top) || 0;
-                el.classList.add('is-dragging'); e.preventDefault();
-            });
-            el.addEventListener('touchstart', (e) => {
-                if (e.target.classList.contains('sticker-delete') || e.target.tagName === 'TEXTAREA') return;
-                isDragging = true; startX = e.touches[0].clientX; startY = e.touches[0].clientY;
-                startLeft = parseInt(el.style.left) || 0; startTop = parseInt(el.style.top) || 0;
-                el.classList.add('is-dragging');
-            }, { passive: true });
-            document.addEventListener('mousemove', (e) => {
-                if (!isDragging) return; const board = document.getElementById('notesBoard');
-                el.style.left = Math.max(0, Math.min(board.offsetWidth - 190, startLeft + e.clientX - startX)) + 'px';
-                el.style.top = Math.max(0, Math.min(board.offsetHeight - 170, startTop + e.clientY - startY)) + 'px';
-            });
-            document.addEventListener('touchmove', (e) => {
-                if (!isDragging) return; const board = document.getElementById('notesBoard');
-                el.style.left = Math.max(0, Math.min(board.offsetWidth - 190, startLeft + e.touches[0].clientX - startX)) + 'px';
-                el.style.top = Math.max(0, Math.min(board.offsetHeight - 170, startTop + e.touches[0].clientY - startY)) + 'px';
-            }, { passive: true });
-            const stopDrag = () => {
-                if (!isDragging) return; isDragging = false; el.classList.remove('is-dragging');
-                notesRef.child(id).update({ x: parseInt(el.style.left), y: parseInt(el.style.top) });
-            };
-            document.addEventListener('mouseup', stopDrag); document.addEventListener('touchend', stopDrag);
+            el.addEventListener('mousedown', (e) => { if (e.target.classList.contains('sticker-delete') || e.target.tagName === 'TEXTAREA') return; isDragging = true; startX = e.clientX; startY = e.clientY; startLeft = parseInt(el.style.left) || 0; startTop = parseInt(el.style.top) || 0; el.classList.add('is-dragging'); e.preventDefault(); });
+            el.addEventListener('touchstart', (e) => { if (e.target.classList.contains('sticker-delete') || e.target.tagName === 'TEXTAREA') return; isDragging = true; startX = e.touches[0].clientX; startY = e.touches[0].clientY; startLeft = parseInt(el.style.left) || 0; startTop = parseInt(el.style.top) || 0; el.classList.add('is-dragging'); }, { passive: true });
+            document.addEventListener('mousemove', (e) => { if (!isDragging) return; const b = document.getElementById('notesBoard'); el.style.left = Math.max(0, Math.min(b.offsetWidth - 190, startLeft + e.clientX - startX)) + 'px'; el.style.top = Math.max(0, Math.min(b.offsetHeight - 170, startTop + e.clientY - startY)) + 'px'; });
+            document.addEventListener('touchmove', (e) => { if (!isDragging) return; const b = document.getElementById('notesBoard'); el.style.left = Math.max(0, Math.min(b.offsetWidth - 190, startLeft + e.touches[0].clientX - startX)) + 'px'; el.style.top = Math.max(0, Math.min(b.offsetHeight - 170, startTop + e.touches[0].clientY - startY)) + 'px'; }, { passive: true });
+            const stop = () => { if (!isDragging) return; isDragging = false; el.classList.remove('is-dragging'); notesRef.child(id).update({ x: parseInt(el.style.left), y: parseInt(el.style.top) }); };
+            document.addEventListener('mouseup', stop); document.addEventListener('touchend', stop);
         }
 
         function deleteSticker(id) {
-            notesRef.child(id).remove();
-            const el = document.getElementById('sticker-' + id);
-            if (el) el.remove();
-            setTimeout(() => markAsSeen('notes'), 100);
-            showToast('note removed');
+            notesRef.child(id).remove(); const el = document.getElementById('sticker-' + id); if (el) el.remove();
+            setTimeout(() => markAsSeen('notes'), 100); showToast('note removed');
             const board = document.getElementById('notesBoard');
-            if (board && board.querySelectorAll('.sticker').length === 0) {
-                const hint = document.getElementById('notesBoardHint');
-                if (hint) hint.style.display = 'block';
-            }
+            if (board && board.querySelectorAll('.sticker').length === 0) { const hint = document.getElementById('notesBoardHint'); if (hint) hint.style.display = 'block'; }
         }
 
         notesRef.on('child_added', (snap) => { allStickers[snap.key] = snap.val(); renderSticker(snap.key, snap.val()); });
         notesRef.on('child_removed', (snap) => { delete allStickers[snap.key]; const el = document.getElementById('sticker-' + snap.key); if (el) el.remove(); });
-
         document.getElementById('noteModalOverlay').addEventListener('click', (e) => { if (e.target === document.getElementById('noteModalOverlay')) closeNoteModal(); });
 
-        // ===================== PHOTOS =====================
         document.getElementById('photoFileInput').addEventListener('change', async (e) => {
-            const files = Array.from(e.target.files);
-            if (files.length === 0) return;
-
-            const progress = document.getElementById('uploadProgress');
-            const bar = document.getElementById('progressBarFill');
-            const text = document.getElementById('progressText');
+            const files = Array.from(e.target.files); if (files.length === 0) return;
+            const progress = document.getElementById('uploadProgress'); const bar = document.getElementById('progressBarFill'); const text = document.getElementById('progressText');
             progress.style.display = 'block';
-
             for (let i = 0; i < files.length; i++) {
-                text.textContent = `uploading ${i + 1} of ${files.length}...`;
-                bar.style.width = `${((i) / files.length) * 100}%`;
-
-                try {
-                    const url = await uploadToCloudinary(files[i]);
-                    photosRef.push({ url: url, caption: '', date: getDate(), ts: Date.now() });
-                } catch (err) {
-                    console.error('Upload failed:', err);
-                    showToast('upload failed :(');
-                }
+                text.textContent = `uploading ${i + 1} of ${files.length}...`; bar.style.width = `${((i) / files.length) * 100}%`;
+                try { const url = await uploadToCloudinary(files[i]); photosRef.push({ url, caption: '', date: getDate(), ts: Date.now() }); }
+                catch (err) { console.error(err); showToast('upload failed :('); }
             }
-
             bar.style.width = '100%'; text.textContent = 'done ♡';
             setTimeout(() => { progress.style.display = 'none'; bar.style.width = '0%'; }, 1500);
-
             setTimeout(() => markAsSeen('photos'), 100);
-            showToast(`${files.length} photo${files.length > 1 ? 's' : ''} added ♡`);
-            e.target.value = '';
+            showToast(`${files.length} photo${files.length > 1 ? 's' : ''} added ♡`); e.target.value = '';
         });
 
         function uploadToCloudinary(file) {
             return new Promise((resolve, reject) => {
-                const formData = new FormData();
-                formData.append('file', file);
-                formData.append('upload_preset', UPLOAD_PRESET);
-                formData.append('folder', 'ours-photos');
+                const fd = new FormData(); fd.append('file', file); fd.append('upload_preset', UPLOAD_PRESET); fd.append('folder', 'ours-photos');
                 const xhr = new XMLHttpRequest();
                 xhr.open('POST', `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`);
-                xhr.onload = () => {
-                    if (xhr.status === 200) { const res = JSON.parse(xhr.responseText); resolve(res.secure_url); }
-                    else { reject(new Error('Upload failed')); }
-                };
-                xhr.onerror = () => reject(new Error('Upload error'));
-                xhr.send(formData);
+                xhr.onload = () => { if (xhr.status === 200) resolve(JSON.parse(xhr.responseText).secure_url); else reject(new Error('Upload failed')); };
+                xhr.onerror = () => reject(new Error('Upload error')); xhr.send(fd);
             });
         }
 
         function renderPhotos() {
-            const grid = document.getElementById('photoGrid');
-            const empty = document.getElementById('photosEmpty');
-            const count = document.getElementById('photoCount');
+            const grid = document.getElementById('photoGrid'); const empty = document.getElementById('photosEmpty'); const count = document.getElementById('photoCount');
             const keys = Object.keys(allPhotos);
-
-            if (keys.length === 0) {
-                grid.style.display = 'none'; empty.style.display = 'block'; count.textContent = ''; return;
-            }
-
+            if (keys.length === 0) { grid.style.display = 'none'; empty.style.display = 'block'; count.textContent = ''; return; }
             empty.style.display = 'none'; grid.style.display = 'grid';
             const sorted = keys.sort((a, b) => (allPhotos[b].ts || 0) - (allPhotos[a].ts || 0));
-
             grid.innerHTML = '';
             sorted.forEach((id, index) => {
-                const photo = allPhotos[id];
-                const card = document.createElement('div');
-                card.className = 'photo-card';
-                card.innerHTML = `
-                    <img src="${photo.url}" alt="" loading="lazy">
-                    <button class="photo-delete-btn" onclick="event.stopPropagation(); deletePhoto('${id}')">✕</button>
-                    <div class="photo-overlay"><span class="photo-overlay-date">${photo.date || ''}</span></div>
-                `;
-                card.addEventListener('click', () => openLightbox(index));
-                grid.appendChild(card);
+                const photo = allPhotos[id]; const card = document.createElement('div'); card.className = 'photo-card';
+                card.innerHTML = `<img src="${photo.url}" alt="" loading="lazy"><button class="photo-delete-btn" onclick="event.stopPropagation(); deletePhoto('${id}')">✕</button><div class="photo-overlay"><span class="photo-overlay-date">${photo.date || ''}</span></div>`;
+                card.addEventListener('click', () => openLightbox(index)); grid.appendChild(card);
             });
             count.textContent = `${keys.length} memory${keys.length !== 1 ? 's' : ''} saved ♡`;
         }
 
-        function deletePhoto(id) {
-            if (!confirm('Delete this photo?')) return;
-            photosRef.child(id).remove();
-            setTimeout(() => markAsSeen('photos'), 100);
-            showToast('photo removed');
-        }
+        function deletePhoto(id) { if (!confirm('Delete this photo?')) return; photosRef.child(id).remove(); setTimeout(() => markAsSeen('photos'), 100); showToast('photo removed'); }
 
-        // Lightbox
-        let lightboxPhotos = []; let lightboxIndex = 0;
+        let lightboxPhotos = [], lightboxIndex = 0;
         function openLightbox(index) {
             const keys = Object.keys(allPhotos).sort((a, b) => (allPhotos[b].ts || 0) - (allPhotos[a].ts || 0));
-            lightboxPhotos = keys.map(k => allPhotos[k]);
-            lightboxIndex = index; updateLightbox();
+            lightboxPhotos = keys.map(k => allPhotos[k]); lightboxIndex = index; updateLightbox();
             document.getElementById('lightbox').classList.add('show');
         }
         function closeLightbox() { document.getElementById('lightbox').classList.remove('show'); }
         function navigateLightbox(dir) { lightboxIndex = (lightboxIndex + dir + lightboxPhotos.length) % lightboxPhotos.length; updateLightbox(); }
-        function updateLightbox() {
-            const photo = lightboxPhotos[lightboxIndex];
-            document.getElementById('lightboxImg').src = photo.url;
-            document.getElementById('lightboxCaption').textContent = photo.caption || photo.date || '';
-        }
-
+        function updateLightbox() { const p = lightboxPhotos[lightboxIndex]; document.getElementById('lightboxImg').src = p.url; document.getElementById('lightboxCaption').textContent = p.caption || p.date || ''; }
         document.getElementById('lightbox').addEventListener('click', (e) => { if (e.target === document.getElementById('lightbox')) closeLightbox(); });
-        document.addEventListener('keydown', (e) => {
-            if (!document.getElementById('lightbox').classList.contains('show')) return;
-            if (e.key === 'Escape') closeLightbox();
-            if (e.key === 'ArrowLeft') navigateLightbox(-1);
-            if (e.key === 'ArrowRight') navigateLightbox(1);
-        });
+        document.addEventListener('keydown', (e) => { if (!document.getElementById('lightbox').classList.contains('show')) return; if (e.key === 'Escape') closeLightbox(); if (e.key === 'ArrowLeft') navigateLightbox(-1); if (e.key === 'ArrowRight') navigateLightbox(1); });
 
         window.addEventListener('load', () => markAsSeen(categories[0].id));
 
-        // ===================== START =====================
-        buildColorPicker();
-        buildTabs();
-        buildSections();
+        buildColorPicker(); buildTabs(); buildSections();
     </script>
 </body>
 </html>

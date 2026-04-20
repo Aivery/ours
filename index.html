@@ -701,7 +701,12 @@
         document.getElementById('lightbox').addEventListener('click', (e) => { if (e.target === document.getElementById('lightbox')) closeLightbox(); });
         document.addEventListener('keydown', (e) => { if (!document.getElementById('lightbox').classList.contains('show')) return; if (e.key === 'Escape') closeLightbox(); if (e.key === 'ArrowLeft') navigateLightbox(-1); if (e.key === 'ArrowRight') navigateLightbox(1); });
 
-        window.addEventListener('load', () => markAsSeen(categories[0].id));
+        window.addEventListener('load', () => {
+    // Mark ALL categories as seen on load
+    categories.forEach(cat => markAsSeen(cat.id));
+    markAsSeen('photos');
+    markAsSeen('notes');
+});
 
         buildColorPicker(); buildTabs(); buildSections();
     </script>

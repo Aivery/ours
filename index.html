@@ -479,7 +479,21 @@
             updateTabBadge(catId);
         }
 
-        dataRef.on('value', (snapshot) => { localData = snapshot.val() || {}; renderAll(); updateAllTabBadges(); });
+        let firstLoad = true;
+
+dataRef.on('value', (snapshot) => {
+    localData = snapshot.val() || {};
+    renderAll();
+    
+    if (firstLoad) {
+        // On first load, mark the active tab as seen AFTER data arrives
+        const activeTab = document.querySelector('.tab.active');
+        if (activeTab) markAsSeen(activeTab.dataset.cat);
+        firstLoad = false;
+    }
+    
+    updateAllTabBadges();
+});
         notesRef.on('value', () => { updateTabBadge('notes'); });
         photosRef.on('value', (snap) => { allPhotos = snap.val() || {}; renderPhotos(); updateTabBadge('photos'); });
         function saveToFirebase() { dataRef.set(localData); }
@@ -701,7 +715,6 @@
         document.getElementById('lightbox').addEventListener('click', (e) => { if (e.target === document.getElementById('lightbox')) closeLightbox(); });
         document.addEventListener('keydown', (e) => { if (!document.getElementById('lightbox').classList.contains('show')) return; if (e.key === 'Escape') closeLightbox(); if (e.key === 'ArrowLeft') navigateLightbox(-1); if (e.key === 'ArrowRight') navigateLightbox(1); });
 
-        window.addEventListener('load', () => markAsSeen(categories[0].id));
 
         buildColorPicker(); buildTabs(); buildSections();
     </script>
